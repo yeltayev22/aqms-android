@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Air Quality Monitoring</string>
+
+    <string name="label_live">Live</string>
+    <string name="label_statistics">Statistics</string>
+    <string name="label_profile">Profile</string>
+</resources>
