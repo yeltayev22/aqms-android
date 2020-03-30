@@ -2,7 +2,10 @@ package kz.yeltayev.aqms
 
 import android.app.Application
 import kz.yeltayev.aqms.api.GitHubServiceAPI
-import kz.yeltayev.aqms.module.MainViewModel
+import kz.yeltayev.aqms.module.live.LiveViewModel
+import kz.yeltayev.aqms.module.main.MainViewModel
+import kz.yeltayev.aqms.module.profile.ProfileViewModel
+import kz.yeltayev.aqms.module.statistics.StatisticsViewModel
 import kz.yeltayev.aqms.utils.ResourceProvider
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -23,6 +26,10 @@ class App : Application() {
 
     private val viewModelModule = module {
         viewModel { MainViewModel(get(), get()) }
+
+        viewModel { LiveViewModel() }
+        viewModel { StatisticsViewModel() }
+        viewModel { ProfileViewModel() }
     }
 
     private val listOfModules = module {

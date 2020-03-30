@@ -3,7 +3,8 @@ package kz.yeltayev.aqms
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
-import androidx.viewpager.widget.ViewPager
+import com.ashokvarma.bottomnavigation.BottomNavigationBar
+import com.ashokvarma.bottomnavigation.BottomNavigationItem
 
 object Bindings {
 
@@ -15,10 +16,12 @@ object Bindings {
         }
     }
 
-    @BindingAdapter("viewPager_adapter")
+    @BindingAdapter("bottomNavigation_items")
     @JvmStatic
-    fun setAdapter(viewPager: ViewPager, adapter: MyAdapter) {
-        viewPager.adapter = adapter
-        viewPager.currentItem = 0
+    fun addBottomNavigationItems(view: BottomNavigationBar, items: List<BottomNavigationItem>) {
+        items.forEach { item ->
+            view.addItem(item)
+        }
+        view.setFirstSelectedPosition(0).initialise()
     }
 }
