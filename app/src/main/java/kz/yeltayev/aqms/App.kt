@@ -1,7 +1,7 @@
 package kz.yeltayev.aqms
 
 import android.app.Application
-import kz.yeltayev.aqms.api.GitHubServiceAPI
+import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.module.live.LiveViewModel
 import kz.yeltayev.aqms.module.main.MainViewModel
 import kz.yeltayev.aqms.module.profile.ProfileViewModel
@@ -27,13 +27,13 @@ class App : Application() {
     private val viewModelModule = module {
         viewModel { MainViewModel(get(), get()) }
 
-        viewModel { LiveViewModel() }
+        viewModel { LiveViewModel(get()) }
         viewModel { StatisticsViewModel() }
         viewModel { ProfileViewModel() }
     }
 
     private val listOfModules = module {
-        single { GitHubServiceAPI() }
+        single { ApiServiceModule() }
         single { ResourceProvider(get()) }
     }
 

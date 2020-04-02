@@ -2,9 +2,21 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">@color/skyBlue</color>
 
-    <color name="stroke">#DDE4EF</color>
-    <color name="gray">#969CAD</color>
-    <color name="red">#ff1744</color>
+    <color name="statusBar">#FFFDFD</color>
+    <color name="gray">#757575</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="dark">#442929</color>
+    <color name="skyBlue">#24B3C5</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="aqi_good">#B5D66D</color>
+    <color name="aqi_moderate">#FFDF57</color>
+    <color name="aqi_unhealthy_for_sensitive">#F6A76D</color>
+    <color name="aqi_unhealthy">#F4737A</color>
+    <color name="aqi_very_unhealthy">#AE7EB5</color>
+    <color name="aqi_hazardous">#B27E8B</color>
 </resources>

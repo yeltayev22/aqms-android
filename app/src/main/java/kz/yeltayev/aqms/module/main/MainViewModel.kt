@@ -16,7 +16,7 @@ class MainViewModel(
     init {
         bottomNavigationItems.add(
             BottomNavigationItem(
-                res.getDrawable(R.drawable.ic_profile),
+                res.getDrawable(R.drawable.ic_live),
                 res.getString(R.string.label_live)
             )
         )

@@ -1,7 +1,12 @@
 package kz.yeltayev.aqms
 
+import android.graphics.Color
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
@@ -23,5 +28,41 @@ object Bindings {
             view.addItem(item)
         }
         view.setFirstSelectedPosition(0).initialise()
+    }
+
+    @BindingAdapter("textView_textRes")
+    @JvmStatic
+    fun setTextRes(textView: TextView, textRes: Int) {
+        if (textRes != 0) {
+            textView.setText(textRes)
+        } else {
+            textView.text = null
+        }
+    }
+
+    @BindingAdapter("textView_toString")
+    @JvmStatic
+    fun setStringText(textView: TextView, `object`: Any) {
+        textView.text = `object`.toString()
+    }
+
+    @BindingAdapter("imageView_src")
+    @JvmStatic
+    fun loadDrawableResource(imageView: ImageView, drawableRes: Int) {
+        if (drawableRes != 0) {
+            imageView.setImageResource(drawableRes)
+        } else {
+            imageView.setImageDrawable(null)
+        }
+    }
+
+    @BindingAdapter("view_backgroundColor")
+    @JvmStatic
+    fun setBackgroundColor(view: View, @ColorRes colorRes: Int) {
+        if (colorRes != 0) {
+            view.setBackgroundColor(ContextCompat.getColor(view.context, colorRes))
+        } else {
+            view.setBackgroundColor(Color.TRANSPARENT)
+        }
     }
 }

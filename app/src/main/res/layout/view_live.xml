@@ -7,18 +7,56 @@
         <variable
             name="vm"
             type="kz.yeltayev.aqms.module.live.LiveViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="LIVE"
-            android:textSize="36sp" />
-    </FrameLayout>
+            android:padding="16dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:text="@string/label_my_places"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:src="@drawable/ic_search" />
+        </FrameLayout>
+
+        <kz.yeltayev.aqms.widget.customrecyclerview.CustomRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:visibility="@{vm.isLoading ? View.GONE : View.VISIBLE}"
+            app:rv_dividerDrawable="@color/transparent"
+            app:rv_itemLayout="@layout/item_my_place"
+            app:rv_items="@{vm.places}"
+            app:rv_viewModel="@{vm}" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{vm.isLoading ? View.VISIBLE : View.GONE}">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateDrawable="@drawable/progress" />
+        </FrameLayout>
+
+    </LinearLayout>
 </layout>

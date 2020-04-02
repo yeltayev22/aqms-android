@@ -4,4 +4,14 @@
     <string name="label_live">Live</string>
     <string name="label_statistics">Statistics</string>
     <string name="label_profile">Profile</string>
+
+    <string name="label_my_places">My Places</string>
+    <string name="label_aqi">AQI</string>
+
+    <string name="label_aqi_good">Good</string>
+    <string name="label_aqi_moderate">Moderate</string>
+    <string name="label_aqi_unhealthy_for_sensitive">Unhealthy for sensitive groups</string>
+    <string name="label_aqi_unhealthy">Unhealthy</string>
+    <string name="label_aqi_very_unhealthy">Very Unhealthy</string>
+    <string name="label_aqi_hazardous">Hazardous</string>
 </resources>
