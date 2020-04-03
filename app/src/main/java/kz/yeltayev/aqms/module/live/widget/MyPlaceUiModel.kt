@@ -2,11 +2,9 @@ package kz.yeltayev.aqms.module.live.widget
 
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.model.Place
-import kz.yeltayev.aqms.utils.ResourceProvider
 
-class PlaceUiModel(
-    val place: Place,
-    private val res: ResourceProvider
+class MyPlaceUiModel(
+    val place: Place
 ) {
 
     val aqiImage: Int

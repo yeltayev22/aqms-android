@@ -11,7 +11,7 @@
 
         <variable
             name="item"
-            type="kz.yeltayev.aqms.module.live.widget.PlaceUiModel" />
+            type="kz.yeltayev.aqms.module.live.widget.MyPlaceUiModel" />
     </data>
 
 

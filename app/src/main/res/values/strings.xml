@@ -6,6 +6,7 @@
     <string name="label_profile">Profile</string>
 
     <string name="label_my_places">My Places</string>
+    <string name="label_search_places">Search Places</string>
     <string name="label_aqi">AQI</string>
 
     <string name="label_aqi_good">Good</string>

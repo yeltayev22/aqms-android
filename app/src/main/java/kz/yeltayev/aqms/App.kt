@@ -5,6 +5,7 @@ import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.module.live.LiveViewModel
 import kz.yeltayev.aqms.module.main.MainViewModel
 import kz.yeltayev.aqms.module.profile.ProfileViewModel
+import kz.yeltayev.aqms.module.searchplaces.SearchPlacesViewModel
 import kz.yeltayev.aqms.module.statistics.StatisticsViewModel
 import kz.yeltayev.aqms.utils.ResourceProvider
 import org.koin.android.ext.koin.androidContext
@@ -27,9 +28,12 @@ class App : Application() {
     private val viewModelModule = module {
         viewModel { MainViewModel(get(), get()) }
 
-        viewModel { LiveViewModel(get()) }
+        viewModel { LiveViewModel(get(), get()) }
+        viewModel { SearchPlacesViewModel(get()) }
+
         viewModel { StatisticsViewModel() }
         viewModel { ProfileViewModel() }
+
     }
 
     private val listOfModules = module {

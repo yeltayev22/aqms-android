@@ -6,13 +6,16 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kz.yeltayev.aqms.Screens
 import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.model.Place
-import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
+import kz.yeltayev.aqms.module.live.widget.MyPlaceUiModel
 import kz.yeltayev.aqms.utils.ResourceProvider
+import ru.terrakok.cicerone.Router
 import java.math.BigDecimal
 
 class LiveViewModel(
+    private val router: Router,
     private val res: ResourceProvider
 ) : ViewModel() {
 
@@ -20,7 +23,7 @@ class LiveViewModel(
     private val disposable = CompositeDisposable()
 
     val isLoading = ObservableBoolean()
-    val places = ObservableField<List<PlaceUiModel>>()
+    val places = ObservableField<List<MyPlaceUiModel>>()
 
     init {
 
@@ -52,10 +55,21 @@ class LiveViewModel(
                         158
                     )
                 )
-                val placeUiList = mutableListOf<PlaceUiModel>()
+
+                places.add(
+                    Place(
+                        1,
+                        BigDecimal.ONE,
+                        BigDecimal.ONE,
+                        "Beijing",
+                        "China",
+                        301
+                    )
+                )
+                val placeUiList = mutableListOf<MyPlaceUiModel>()
 
                 places.forEach { item ->
-                    placeUiList.add(PlaceUiModel(item, res))
+                    placeUiList.add(MyPlaceUiModel(item))
                 }
 //                response.body()?.forEach { item ->
 //                    placeUiList.add(PlaceUiModel(item, res))
@@ -66,6 +80,10 @@ class LiveViewModel(
                 isLoading.set(false)
             })
 
+    }
+
+    fun onSearchClicked() {
+        router.navigateTo(Screens.SearchPlacesScreen())
     }
 
     override fun onCleared() {
