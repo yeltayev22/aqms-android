@@ -7,16 +7,19 @@
 
         <variable
             name="vm"
-            type="kz.yeltayev.aqms.module.live.LiveViewModel" />
+            type="kz.yeltayev.aqms.module.searchplaces.SearchPlacesViewModel" />
 
         <variable
             name="item"
-            type="kz.yeltayev.aqms.model.Place" />
+            type="kz.yeltayev.aqms.module.live.widget.PlaceUiModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
         android:orientation="horizontal"
         android:paddingLeft="16dp"
         android:paddingTop="8dp"
@@ -43,7 +46,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="asdsa"
+                android:text="@{item.place.city}"
                 android:textColor="@color/dark"
                 android:textSize="20sp"
                 tools:text="Nur-Sultan" />
@@ -51,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="asda"
+                android:text="@{item.place.country}"
                 android:textColor="@color/gray"
                 android:textSize="14sp"
                 tools:text="Kazakhstan" />
@@ -60,17 +63,17 @@
         <FrameLayout
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/shape_rounded">
+            app:view_backgroundRes="@{item.roundedBackground}">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="21"
                 android:textColor="@color/dark"
                 android:textSize="16sp"
+                app:textView_toString="@{item.place.aqi}"
                 tools:text="21" />
         </FrameLayout>
     </RelativeLayout>

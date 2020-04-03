@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
@@ -63,6 +64,14 @@ object Bindings {
             view.setBackgroundColor(ContextCompat.getColor(view.context, colorRes))
         } else {
             view.setBackgroundColor(Color.TRANSPARENT)
+        }
+    }
+
+    @BindingAdapter("view_backgroundRes")
+    @JvmStatic
+    fun setBackgroundDrawable(view: View, drawableRes: Int) {
+        if (drawableRes != 0) {
+            view.setBackgroundResource(drawableRes)
         }
     }
 }

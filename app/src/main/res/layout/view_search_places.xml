@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -48,27 +49,41 @@
 
         </FrameLayout>
 
-        <!--        <kz.yeltayev.aqms.widget.customrecyclerview.CustomRecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    android:visibility="@{vm.isLoading ? View.GONE : View.VISIBLE}"
-                    app:rv_dividerDrawable="@color/transparent"
-                    app:rv_itemLayout="@layout/item_search_place"
-                    app:rv_items="@{vm.places}"
-                    app:rv_viewModel="@{vm}" />-->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/shape_rounded_search"
+            app:defaultQueryHint="@string/label_search"
+            app:queryBackground="@null"
+            app:queryHint="@string/label_search"
+            app:searchHintIcon="@null" />
 
-        <!--       <FrameLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:visibility="@{vm.isLoading ? View.VISIBLE : View.GONE}">
+        <kz.yeltayev.aqms.widget.customrecyclerview.CustomRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:visibility="@{vm.isLoading ? View.GONE : View.VISIBLE}"
+            app:rv_dividerDrawable="@color/transparent"
+            app:rv_itemLayout="@layout/item_search_place"
+            app:rv_items="@{vm.places}"
+            app:rv_viewModel="@{vm}" />
 
-                   <ProgressBar
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="center"
-                       android:indeterminateDrawable="@drawable/progress" />
-               </FrameLayout>-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{vm.isLoading ? View.VISIBLE : View.GONE}">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateDrawable="@drawable/progress" />
+        </FrameLayout>
 
     </LinearLayout>
 </layout>

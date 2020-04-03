@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers
 import kz.yeltayev.aqms.Screens
 import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.model.Place
-import kz.yeltayev.aqms.module.live.widget.MyPlaceUiModel
+import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import kz.yeltayev.aqms.utils.ResourceProvider
 import ru.terrakok.cicerone.Router
 import java.math.BigDecimal
@@ -23,7 +23,7 @@ class LiveViewModel(
     private val disposable = CompositeDisposable()
 
     val isLoading = ObservableBoolean()
-    val places = ObservableField<List<MyPlaceUiModel>>()
+    val places = ObservableField<List<PlaceUiModel>>()
 
     init {
 
@@ -66,10 +66,10 @@ class LiveViewModel(
                         301
                     )
                 )
-                val placeUiList = mutableListOf<MyPlaceUiModel>()
+                val placeUiList = mutableListOf<PlaceUiModel>()
 
                 places.forEach { item ->
-                    placeUiList.add(MyPlaceUiModel(item))
+                    placeUiList.add(PlaceUiModel(item))
                 }
 //                response.body()?.forEach { item ->
 //                    placeUiList.add(PlaceUiModel(item, res))

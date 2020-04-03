@@ -11,7 +11,7 @@
 
         <variable
             name="item"
-            type="kz.yeltayev.aqms.module.live.widget.MyPlaceUiModel" />
+            type="kz.yeltayev.aqms.module.live.widget.PlaceUiModel" />
     </data>
 
 
@@ -28,6 +28,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             android:orientation="horizontal"
             android:padding="16dp"
             app:view_backgroundColor="@{item.color}">

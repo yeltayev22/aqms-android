@@ -3,7 +3,7 @@ package kz.yeltayev.aqms.module.live.widget
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.model.Place
 
-class MyPlaceUiModel(
+class PlaceUiModel(
     val place: Place
 ) {
 
@@ -75,6 +75,30 @@ class MyPlaceUiModel(
                 }
                 else -> {
                     return R.color.aqi_hazardous
+                }
+            }
+        }
+
+    val roundedBackground: Int
+        get() {
+            when (place.aqi) {
+                in 1..50 -> {
+                    return R.drawable.shape_rounded_good
+                }
+                in 51..100 -> {
+                    return R.drawable.shape_rounded_moderate
+                }
+                in 101..150 -> {
+                    return R.drawable.shape_rounded_unhealhty_for_sensitive
+                }
+                in 151..200 -> {
+                    return R.drawable.shape_rounded_unhealthy
+                }
+                in 201..300 -> {
+                    return R.drawable.shape_rounded_very_unhealthy
+                }
+                else -> {
+                    return R.drawable.shape_rounded_hazardous
                 }
             }
         }
