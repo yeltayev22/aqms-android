@@ -6,11 +6,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 object Bindings {
 
@@ -44,7 +45,12 @@ object Bindings {
     @BindingAdapter("textView_toString")
     @JvmStatic
     fun setStringText(textView: TextView, `object`: Any) {
-        textView.text = `object`.toString()
+        if (`object` is BigDecimal) {
+            val value = `object`.setScale(PRECISION, RoundingMode.HALF_UP)
+            textView.text = value.toString()
+        } else {
+            textView.text = `object`.toString()
+        }
     }
 
     @BindingAdapter("imageView_src")
@@ -74,4 +80,6 @@ object Bindings {
             view.setBackgroundResource(drawableRes)
         }
     }
+
+    private const val PRECISION = 2
 }

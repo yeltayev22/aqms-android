@@ -14,6 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <FrameLayout
@@ -70,7 +72,7 @@
             android:visibility="@{vm.isLoading ? View.GONE : View.VISIBLE}"
             app:rv_dividerDrawable="@color/transparent"
             app:rv_itemLayout="@layout/item_search_place"
-            app:rv_items="@{vm.places}"
+            app:rv_items="@{vm.filteredPlaces}"
             app:rv_viewModel="@{vm}" />
 
         <FrameLayout

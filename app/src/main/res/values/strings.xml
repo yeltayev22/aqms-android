@@ -8,6 +8,7 @@
     <string name="label_my_places">My Places</string>
     <string name="label_search_places">Search Places</string>
     <string name="label_aqi">AQI</string>
+    <string name="label_search">Search</string>
 
     <string name="label_aqi_good">Good</string>
     <string name="label_aqi_moderate">Moderate</string>
@@ -15,5 +16,12 @@
     <string name="label_aqi_unhealthy">Unhealthy</string>
     <string name="label_aqi_very_unhealthy">Very Unhealthy</string>
     <string name="label_aqi_hazardous">Hazardous</string>
-    <string name="label_search">Search</string>
+
+    <string name="info_aqi_good">Little to no health risk</string>
+    <string name="info_aqi_moderate">Sensitive individuals may experience irritations</string>
+    <string name="info_aqi_unhealthy_for_sensitive">Sensitive groups should limit outdoor exertion</string>
+    <string name="info_aqi_unhealthy">Harmful for sensitive groups, reduce outdoor activities</string>
+    <string name="info_aqi_very_unhealthy">Everyone can be affected. Avoid outdoor activity</string>
+    <string name="info_aqi_hazardous">Serious risk of respiratory effects. Everyone should avoid outdoor activity</string>
+
 </resources>

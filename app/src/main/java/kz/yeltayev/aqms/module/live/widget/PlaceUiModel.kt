@@ -55,6 +55,30 @@ class PlaceUiModel(
             }
         }
 
+    val aqiInfo: Int
+        get() {
+            when (place.aqi) {
+                in 1..50 -> {
+                    return R.string.info_aqi_good
+                }
+                in 51..100 -> {
+                    return R.string.info_aqi_moderate
+                }
+                in 101..150 -> {
+                    return R.string.info_aqi_unhealthy_for_sensitive
+                }
+                in 151..200 -> {
+                    return R.string.info_aqi_unhealthy
+                }
+                in 201..300 -> {
+                    return R.string.info_aqi_very_unhealthy
+                }
+                else -> {
+                    return R.string.info_aqi_hazardous
+                }
+            }
+        }
+
     val color: Int
         get() {
             when (place.aqi) {
@@ -89,7 +113,7 @@ class PlaceUiModel(
                     return R.drawable.shape_rounded_moderate
                 }
                 in 101..150 -> {
-                    return R.drawable.shape_rounded_unhealhty_for_sensitive
+                    return R.drawable.shape_rounded_unhealthy_for_sensitive
                 }
                 in 151..200 -> {
                     return R.drawable.shape_rounded_unhealthy
@@ -99,6 +123,30 @@ class PlaceUiModel(
                 }
                 else -> {
                     return R.drawable.shape_rounded_hazardous
+                }
+            }
+        }
+
+    val topRoundedBackground: Int
+        get() {
+            when (place.aqi) {
+                in 1..50 -> {
+                    return R.drawable.shape_top_rounded_good
+                }
+                in 51..100 -> {
+                    return R.drawable.shape_top_rounded_moderate
+                }
+                in 101..150 -> {
+                    return R.drawable.shape_top_rounded_unhealthy_for_sensitive
+                }
+                in 151..200 -> {
+                    return R.drawable.shape_top_rounded_unhealthy
+                }
+                in 201..300 -> {
+                    return R.drawable.shape_top_rounded_very_unhealthy
+                }
+                else -> {
+                    return R.drawable.shape_top_rounded_hazardous
                 }
             }
         }

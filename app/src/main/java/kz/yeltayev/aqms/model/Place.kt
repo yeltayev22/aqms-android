@@ -4,9 +4,11 @@ import java.math.BigDecimal
 
 data class Place(
     val id: Long,
-    val lon: BigDecimal,
-    val lat: BigDecimal,
+    val longitude: BigDecimal,
+    val latitude: BigDecimal,
     val city: String,
     val country: String,
-    val aqi: Int
+    val aqi: Int,
+    val gas: Gas,
+    val weather: Weather
 )

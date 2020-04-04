@@ -12,6 +12,8 @@
     <color name="dark">#442929</color>
     <color name="skyBlue">#24B3C5</color>
     <color name="transparent">#00000000</color>
+    <color name="transparentOverlayWhite">#e6ffffff</color>
+    <color name="transparentOverlayBlack">#64000000</color>
 
     <color name="aqi_good">#B5D66D</color>
     <color name="aqi_moderate">#FFDF57</color>

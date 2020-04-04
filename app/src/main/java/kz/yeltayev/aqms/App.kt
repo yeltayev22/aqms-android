@@ -4,9 +4,12 @@ import android.app.Application
 import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.module.live.LiveViewModel
 import kz.yeltayev.aqms.module.main.MainViewModel
+import kz.yeltayev.aqms.module.place.PlaceViewModel
 import kz.yeltayev.aqms.module.profile.ProfileViewModel
 import kz.yeltayev.aqms.module.searchplaces.SearchPlacesViewModel
 import kz.yeltayev.aqms.module.statistics.StatisticsViewModel
+import kz.yeltayev.aqms.utils.GeneralPreferences
+import kz.yeltayev.aqms.utils.LocalStorageImpl
 import kz.yeltayev.aqms.utils.ResourceProvider
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -30,6 +33,7 @@ class App : Application() {
 
         viewModel { LiveViewModel(get(), get()) }
         viewModel { SearchPlacesViewModel(get()) }
+        viewModel { PlaceViewModel(get()) }
 
         viewModel { StatisticsViewModel() }
         viewModel { ProfileViewModel() }
@@ -39,6 +43,8 @@ class App : Application() {
     private val listOfModules = module {
         single { ApiServiceModule() }
         single { ResourceProvider(get()) }
+        single { LocalStorageImpl(get()) }
+        single { GeneralPreferences(get()) }
     }
 
 

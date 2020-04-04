@@ -6,75 +6,65 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kz.yeltayev.aqms.Screens
 import kz.yeltayev.aqms.api.ApiServiceModule
-import kz.yeltayev.aqms.model.Place
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import ru.terrakok.cicerone.Router
-import java.math.BigDecimal
+import timber.log.Timber
 
 class SearchPlacesViewModel(
     private val router: Router
 ) : ViewModel() {
 
+    val isLoading = ObservableBoolean()
+    val filteredPlaces = ObservableField<List<PlaceUiModel>>()
+
     private val serviceModule = ApiServiceModule()
     private val disposable = CompositeDisposable()
-
-    val isLoading = ObservableBoolean()
-    val places = ObservableField<List<PlaceUiModel>>()
+    private val allPlaces = ObservableField<List<PlaceUiModel>>()
 
     init {
+        fetchPlaces()
+    }
+
+    private fun fetchPlaces() {
         isLoading.set(true)
         val placeService = serviceModule.getPlaceService()
-        disposable.add(placeService.fetchPlaces()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { response ->
-                val places = mutableListOf<Place>()
-                places.add(
-                    Place(
-                        1,
-                        BigDecimal.ONE,
-                        BigDecimal.ONE,
-                        "Nur-Sultan",
-                        "Kazakhstan",
-                        21
-                    )
-                )
+        disposable.add(
+            placeService.fetchPlaces()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess { response ->
+                    val placeUiList = mutableListOf<PlaceUiModel>()
 
-                places.add(
-                    Place(
-                        1,
-                        BigDecimal.ONE,
-                        BigDecimal.ONE,
-                        "Almaty",
-                        "Kazakhstan",
-                        158
-                    )
-                )
+                    response.body()?.forEach { item ->
+                        placeUiList.add(PlaceUiModel(item))
+                    }
 
-                places.add(
-                    Place(
-                        1,
-                        BigDecimal.ONE,
-                        BigDecimal.ONE,
-                        "Beijing",
-                        "China",
-                        301
-                    )
-                )
-                val placeUiList = mutableListOf<PlaceUiModel>()
+                    allPlaces.set(placeUiList)
+                    filteredPlaces.set(placeUiList)
 
-                places.forEach { item ->
-                    placeUiList.add(PlaceUiModel(item))
+                    isLoading.set(false)
                 }
-//                response.body()?.forEach { item ->
-//                    placeUiList.add(PlaceUiModel(item, res))
-//                }
+                .doOnError { error ->
+                    isLoading.set(false)
+                    Timber.d("yeltayev22 $error")
+                }
+                .subscribe()
+        )
+    }
 
-                this.places.set(placeUiList)
+    fun search(query: String) {
+        val allPlaces = allPlaces.get() ?: return
+        val filtered = allPlaces.filter { item ->
+            item.place.city.contains(query, true) || item.place.country.contains(query, true)
+        }
 
-                isLoading.set(false)
-            })
+        filteredPlaces.set(filtered)
+    }
+
+    fun onPlaceSelected(item: PlaceUiModel) {
+        router.navigateTo(Screens.PlaceScreen(item))
     }
 
     fun goBack() {
