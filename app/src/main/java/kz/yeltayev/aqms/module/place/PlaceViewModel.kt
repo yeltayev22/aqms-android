@@ -2,12 +2,12 @@ package kz.yeltayev.aqms.module.place
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
-import ru.terrakok.cicerone.Router
 
-class PlaceViewModel(
-    private val router: Router
-) : ViewModel() {
+class PlaceViewModel : ViewModel() {
+
+    lateinit var navController: NavController
 
     val placeUiModel = ObservableField<PlaceUiModel>()
 
@@ -16,6 +16,6 @@ class PlaceViewModel(
     }
 
     fun goBack() {
-        router.exit()
+        navController.popBackStack()
     }
 }

@@ -9,25 +9,26 @@
             type="kz.yeltayev.aqms.module.main.MainViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context=".MainActivity">
 
-        <FrameLayout
-            android:id="@+id/container"
+        <kz.yeltayev.aqms.NonSwipingViewPager
+            android:id="@+id/main_pager"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/white" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="56dp" />
 
-        <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:bnbMode="mode_default"
-            app:bottomNavigation_items="@{vm.bottomNavigationItems}" />
-    </LinearLayout>
+            android:background="@color/white"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/menu_bottom_navigation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -3,20 +3,21 @@ package kz.yeltayev.aqms.module.live
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kz.yeltayev.aqms.Screens
+import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import kz.yeltayev.aqms.utils.ResourceProvider
-import ru.terrakok.cicerone.Router
 import timber.log.Timber
 
 class LiveViewModel(
-    private val router: Router,
     private val res: ResourceProvider
 ) : ViewModel() {
+
+    lateinit var navController: NavController
 
     private val serviceModule = ApiServiceModule()
     private val disposable = CompositeDisposable()
@@ -52,7 +53,7 @@ class LiveViewModel(
     }
 
     fun onSearchClicked() {
-        router.navigateTo(Screens.SearchPlacesScreen())
+        navController.navigate(R.id.action_search)
     }
 
     override fun onCleared() {

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.databinding.ViewSearchPlacesBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,6 +28,7 @@ class SearchPlacesFragment : Fragment(), SearchView.OnQueryTextListener {
 
         binding.searchView.setOnQueryTextListener(this)
 
+        searchPlacesViewModel.navController = findNavController()
         return binding.root
     }
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_statistics"
+    app:startDestination="@id/statistics_dest">
+
+    <fragment
+        android:id="@+id/statistics_dest"
+        android:name="kz.yeltayev.aqms.module.statistics.StatisticsFragment"
+        android:label="@string/label_statistics"
+        tools:layout="@layout/view_statistics">
+        <!--<action
+            android:id="@+id/action_read"
+            app:destination="@id/book_dest" />-->
+    </fragment>
+    <!--<fragment
+        android:id="@+id/book_dest"
+        android:name="com.example.viewpagernavigation
+                         .modules.library.BookFragment"
+        android:label="Book" />-->
+</navigation>

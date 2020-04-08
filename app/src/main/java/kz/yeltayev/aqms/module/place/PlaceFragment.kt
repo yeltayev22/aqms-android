@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.databinding.ViewPlaceBinding
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
@@ -31,6 +32,7 @@ class PlaceFragment(
 
         binding.vm = placeViewModel
 
+        placeViewModel.navController = findNavController()
         return binding.root
     }
 

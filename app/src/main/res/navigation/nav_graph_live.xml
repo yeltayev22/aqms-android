@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_live"
+    app:startDestination="@id/live_dest">
+
+    <fragment
+        android:id="@+id/live_dest"
+        android:name="kz.yeltayev.aqms.module.live.LiveFragment"
+        android:label="@string/label_live"
+        tools:layout="@layout/view_live">
+        <action
+            android:id="@+id/action_search"
+            app:destination="@id/search_places_dest"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/search_places_dest"
+        android:name="kz.yeltayev.aqms.module.searchplaces.SearchPlacesFragment"
+        android:label="@string/label_search_places"
+        tools:layout="@layout/view_search_places">
+        <action
+            android:id="@+id/action_search_places_dest_to_place_dest"
+            app:destination="@id/place_dest"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/place_dest"
+        android:name="kz.yeltayev.aqms.module.place.PlaceFragment"
+        android:label="Place"
+        tools:layout="@layout/view_place" />
+
+</navigation>

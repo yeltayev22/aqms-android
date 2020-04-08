@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/live"
+        android:icon="@drawable/ic_live"
+        android:title="@string/label_live" />
+    <item
+        android:id="@+id/statistics"
+        android:icon="@drawable/ic_statistics"
+        android:title="@string/label_statistics" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/label_profile" />
+
+</menu>

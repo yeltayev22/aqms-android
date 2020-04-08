@@ -16,24 +16,15 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
-import ru.terrakok.cicerone.Cicerone
-import ru.terrakok.cicerone.Router
 
 class App : Application() {
 
-    private var cicerone: Cicerone<Router>? = null
-
-    private val navigationModule = module {
-        single { cicerone?.router }
-        single { cicerone?.navigatorHolder }
-    }
-
     private val viewModelModule = module {
-        viewModel { MainViewModel(get(), get()) }
+        viewModel { MainViewModel(get()) }
 
-        viewModel { LiveViewModel(get(), get()) }
-        viewModel { SearchPlacesViewModel(get()) }
-        viewModel { PlaceViewModel(get()) }
+        viewModel { LiveViewModel(get()) }
+        viewModel { SearchPlacesViewModel() }
+        viewModel { PlaceViewModel() }
 
         viewModel { StatisticsViewModel() }
         viewModel { ProfileViewModel() }
@@ -47,22 +38,14 @@ class App : Application() {
         single { GeneralPreferences(get()) }
     }
 
-
     override fun onCreate() {
         super.onCreate()
-
-        initCicerone()
 
         startKoin {
             androidLogger()
             androidContext(this@App)
             modules(listOfModules)
-            modules(navigationModule)
             modules(viewModelModule)
         }
-    }
-
-    private fun initCicerone() {
-        cicerone = Cicerone.create();
     }
 }

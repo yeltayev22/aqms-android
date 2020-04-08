@@ -3,18 +3,18 @@ package kz.yeltayev.aqms.module.searchplaces
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kz.yeltayev.aqms.Screens
+import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
-import ru.terrakok.cicerone.Router
 import timber.log.Timber
 
-class SearchPlacesViewModel(
-    private val router: Router
-) : ViewModel() {
+class SearchPlacesViewModel : ViewModel() {
+
+    lateinit var navController: NavController
 
     val isLoading = ObservableBoolean()
     val filteredPlaces = ObservableField<List<PlaceUiModel>>()
@@ -64,10 +64,12 @@ class SearchPlacesViewModel(
     }
 
     fun onPlaceSelected(item: PlaceUiModel) {
-        router.navigateTo(Screens.PlaceScreen(item))
+//        router.navigateTo(Screens.PlaceScreen(item))
+        //TODO: Transfer item
+        navController.navigate(R.id.action_search_places_dest_to_place_dest)
     }
 
     fun goBack() {
-        router.exit()
+        navController.popBackStack()
     }
 }
