@@ -173,8 +173,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:text="@{vm.placeUiModel.temperatureLabel}"
                             android:textColor="@color/dark"
-                            app:textView_toString="@{vm.placeUiModel.place.weather.temperature}"
                             tools:text="21" />
                     </LinearLayout>
 
@@ -195,8 +195,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:text="@{vm.placeUiModel.humidityLabel}"
                             android:textColor="@color/dark"
-                            app:textView_toString="@{vm.placeUiModel.place.weather.humidity}"
                             tools:text="76%" />
                     </LinearLayout>
 
@@ -217,8 +217,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            android:text="@{vm.placeUiModel.pressureLabel}"
                             android:textColor="@color/dark"
-                            app:textView_toString="@{vm.placeUiModel.place.weather.pressure}"
                             tools:text="100" />
                     </LinearLayout>
                 </LinearLayout>

@@ -1,5 +1,6 @@
 package kz.yeltayev.aqms.module.live
 
+import androidx.core.os.bundleOf
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
@@ -54,6 +55,11 @@ class LiveViewModel(
 
     fun onSearchClicked() {
         navController.navigate(R.id.action_search)
+    }
+
+    fun onPlaceClicked(item: PlaceUiModel) {
+        val bundle = bundleOf("placeUiModel" to item)
+        navController.navigate(R.id.place_dest, bundle)
     }
 
     override fun onCleared() {

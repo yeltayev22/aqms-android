@@ -1,5 +1,6 @@
 package kz.yeltayev.aqms.module.searchplaces
 
+import androidx.core.os.bundleOf
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
@@ -64,9 +65,8 @@ class SearchPlacesViewModel : ViewModel() {
     }
 
     fun onPlaceSelected(item: PlaceUiModel) {
-//        router.navigateTo(Screens.PlaceScreen(item))
-        //TODO: Transfer item
-        navController.navigate(R.id.action_search_places_dest_to_place_dest)
+        val bundle = bundleOf("placeUiModel" to item)
+        navController.navigate(R.id.action_search_places_dest_to_place_dest, bundle)
     }
 
     fun goBack() {

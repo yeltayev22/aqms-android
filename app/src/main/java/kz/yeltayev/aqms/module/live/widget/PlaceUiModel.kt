@@ -2,10 +2,31 @@ package kz.yeltayev.aqms.module.live.widget
 
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.model.Place
+import kz.yeltayev.aqms.utils.round
+import kz.yeltayev.aqms.utils.toKiloPascal
+import java.io.Serializable
 
 class PlaceUiModel(
     val place: Place
-) {
+) : Serializable {
+
+    val temperatureLabel: String
+        get() {
+            val value = place.weather.temperature.round()
+            return "$value°"
+        }
+
+    val humidityLabel: String
+        get() {
+            val value = place.weather.humidity.round()
+            return "$value%"
+        }
+
+    val pressureLabel: String
+        get() {
+            val value = place.weather.pressure.toKiloPascal().round()
+            return "$value kPa"
+        }
 
     val aqiImage: Int
         get() {

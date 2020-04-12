@@ -16,7 +16,12 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-
+        <action
+            android:id="@+id/action_live_dest_to_place_dest"
+            app:destination="@id/place_dest"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -36,6 +41,10 @@
         android:id="@+id/place_dest"
         android:name="kz.yeltayev.aqms.module.place.PlaceFragment"
         android:label="Place"
-        tools:layout="@layout/view_place" />
+        tools:layout="@layout/view_place">
+        <argument
+            android:name="placeUiModel"
+            app:argType="kz.yeltayev.aqms.module.live.widget.PlaceUiModel" />
+    </fragment>
 
 </navigation>

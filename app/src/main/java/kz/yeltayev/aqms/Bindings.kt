@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import kz.yeltayev.aqms.utils.PRECISION
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -69,6 +70,4 @@ object Bindings {
             view.setBackgroundResource(drawableRes)
         }
     }
-
-    private const val PRECISION = 2
 }

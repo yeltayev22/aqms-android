@@ -12,9 +12,7 @@ import kz.yeltayev.aqms.databinding.ViewPlaceBinding
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PlaceFragment(
-    val placeUiModel: PlaceUiModel
-) : Fragment() {
+class PlaceFragment : Fragment() {
 
     private val placeViewModel: PlaceViewModel by viewModel()
 
@@ -37,8 +35,7 @@ class PlaceFragment(
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val placeUiModel = arguments?.get("placeUiModel") as PlaceUiModel
         placeViewModel.setPlace(placeUiModel)
     }
-
-
 }
