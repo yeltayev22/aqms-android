@@ -2,6 +2,7 @@ package kz.yeltayev.aqms
 
 import android.app.Application
 import kz.yeltayev.aqms.api.ApiServiceModule
+import kz.yeltayev.aqms.api.WeatherApiServiceModule
 import kz.yeltayev.aqms.module.live.LiveViewModel
 import kz.yeltayev.aqms.module.main.MainViewModel
 import kz.yeltayev.aqms.module.place.PlaceViewModel
@@ -33,6 +34,7 @@ class App : Application() {
 
     private val listOfModules = module {
         single { ApiServiceModule() }
+        single { WeatherApiServiceModule() }
         single { ResourceProvider(get()) }
         single { LocalStorageImpl(get()) }
         single { GeneralPreferences(get()) }
