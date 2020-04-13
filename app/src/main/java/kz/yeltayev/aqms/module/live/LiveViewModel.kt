@@ -11,11 +11,13 @@ import io.reactivex.schedulers.Schedulers
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
+import kz.yeltayev.aqms.utils.GeneralPreferences
 import kz.yeltayev.aqms.utils.ResourceProvider
 import timber.log.Timber
 
 class LiveViewModel(
-    private val res: ResourceProvider
+    private val res: ResourceProvider,
+    private val prefs: GeneralPreferences
 ) : ViewModel() {
 
     lateinit var navController: NavController
@@ -27,6 +29,11 @@ class LiveViewModel(
     val places = ObservableField<List<PlaceUiModel>>()
 
     init {
+        fetchMyPlaces()
+    }
+
+    fun fetchMyPlaces() {
+        val myPlaces = prefs.getMyPlaces()
 
         isLoading.set(true)
         val placeService = serviceModule.getPlaceService()
@@ -37,7 +44,9 @@ class LiveViewModel(
                 .doOnSuccess { response ->
                     val placeUiList = mutableListOf<PlaceUiModel>()
                     response.body()?.forEach { item ->
-                        placeUiList.add(PlaceUiModel(item))
+                        if (myPlaces.contains(item.id.toString())) {
+                            placeUiList.add(PlaceUiModel(item))
+                        }
                     }
 
                     this.places.set(placeUiList)
@@ -50,7 +59,6 @@ class LiveViewModel(
                 }
                 .subscribe()
         )
-
     }
 
     fun onSearchClicked() {

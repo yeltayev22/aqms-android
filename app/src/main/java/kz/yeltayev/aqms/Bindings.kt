@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ramijemli.percentagechartview.PercentageChartView
 import kz.yeltayev.aqms.utils.PRECISION
 import java.math.BigDecimal
@@ -76,5 +77,19 @@ object Bindings {
     @JvmStatic
     fun setProgress(view: PercentageChartView, percentage: BigDecimal) {
         view.setProgress(percentage.toFloat(), true)
+    }
+
+    @BindingAdapter("srl_onRefresh")
+    @JvmStatic
+    fun setOnRefreshListener(view: SwipeRefreshLayout, callback: () -> Unit) {
+        view.setOnRefreshListener {
+            callback.invoke()
+        }
+    }
+
+    @BindingAdapter("srl_isRefreshing")
+    @JvmStatic
+    fun setIsRefreshing(view: SwipeRefreshLayout, isRefreshing: Boolean) {
+        view.isRefreshing = isRefreshing
     }
 }

@@ -25,7 +25,7 @@ class App : Application() {
     private val viewModelModule = module {
         viewModel { MainViewModel(get()) }
 
-        viewModel { LiveViewModel(get()) }
+        viewModel { LiveViewModel(get(), get()) }
         viewModel { SearchPlacesViewModel() }
         viewModel { PlaceViewModel(get()) }
 

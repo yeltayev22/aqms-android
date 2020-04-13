@@ -4,7 +4,6 @@ import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.model.DailyWeatherForecast
 import kz.yeltayev.aqms.utils.round
 import java.text.SimpleDateFormat
-import java.util.*
 
 data class WeatherForecastUiModel(
     val dailyWeatherForecast: DailyWeatherForecast,
@@ -31,7 +30,7 @@ data class WeatherForecastUiModel(
     val dayName: String
         get() {
             val inFormat = SimpleDateFormat("yyyy-MM-dd")
-            val date: Date = inFormat.parse(dailyWeatherForecast.datetime)
+            val date = inFormat.parse(dailyWeatherForecast.datetime)
             val outFormat = SimpleDateFormat("EEEE")
             return outFormat.format(date)
         }
