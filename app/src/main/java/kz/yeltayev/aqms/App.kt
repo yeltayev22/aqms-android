@@ -27,7 +27,7 @@ class App : Application() {
 
         viewModel { LiveViewModel(get()) }
         viewModel { SearchPlacesViewModel() }
-        viewModel { PlaceViewModel() }
+        viewModel { PlaceViewModel(get()) }
 
         viewModel { StatisticsViewModel() }
         viewModel { ProfileViewModel() }
@@ -41,8 +41,8 @@ class App : Application() {
         single { ApiServiceModule() }
         single { WeatherApiServiceModule() }
         single { ResourceProvider(get()) }
-        single { LocalStorageImpl(get()) }
         single { GeneralPreferences(get()) }
+        single { LocalStorageImpl(get()) }
     }
 
     override fun onCreate() {

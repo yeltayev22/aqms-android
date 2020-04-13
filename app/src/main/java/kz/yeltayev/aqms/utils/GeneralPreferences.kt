@@ -1,13 +1,32 @@
 package kz.yeltayev.aqms.utils
 
-import kz.yeltayev.aqms.model.Place
-
 class GeneralPreferences(
-    private val localStorage: LocalStorage
+    private val localStorage: LocalStorageImpl
 ) {
 
-    fun saveMyPlaces(places: List<Place>) {
-        localStorage.putStringList(AQMS_MY_PLACES, places.map { it.id.toString() }, true)
+    fun addPlace(placeId: Long) {
+        val mySavedPlaces: List<String> = getMyPlaces()
+        val places = mutableListOf<String>()
+
+        if (mySavedPlaces.isEmpty()) {
+            places.add(placeId.toString())
+        } else {
+            places.addAll(mySavedPlaces)
+            places.add(placeId.toString())
+        }
+
+        localStorage.putStringList(AQMS_MY_PLACES, places, true)
+    }
+
+    fun removePlace(placeId: Long) {
+        val mySavedPlaces: List<String> = getMyPlaces()
+        val places = mutableListOf<String>()
+
+        if (mySavedPlaces.contains(placeId.toString())) {
+            places.addAll(mySavedPlaces.filter { it != placeId.toString() })
+        }
+
+        localStorage.putStringList(AQMS_MY_PLACES, places, true)
     }
 
     fun getMyPlaces(): List<String> {

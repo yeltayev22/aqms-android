@@ -2,20 +2,25 @@ package kz.yeltayev.aqms.module.place
 
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.api.WeatherApiServiceModule
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import kz.yeltayev.aqms.module.place.widget.WeatherForecastUiModel
+import kz.yeltayev.aqms.utils.GeneralPreferences
 import kz.yeltayev.aqms.utils.round
 import timber.log.Timber
 import java.math.BigDecimal
 import kotlin.random.Random
 
-class PlaceViewModel : ViewModel() {
+class PlaceViewModel(
+    private val prefs: GeneralPreferences
+) : ViewModel() {
 
     val isLoading = ObservableBoolean()
     val placeUiModel = ObservableField<PlaceUiModel>()
@@ -30,6 +35,9 @@ class PlaceViewModel : ViewModel() {
     val dayFive = ObservableField<WeatherForecastUiModel>()
     val daySix = ObservableField<WeatherForecastUiModel>()
     val daySeven = ObservableField<WeatherForecastUiModel>()
+
+    val heartIcon = ObservableInt()
+    private var saved = false
 
     lateinit var navController: NavController
     private val weatherApiServiceModule = WeatherApiServiceModule()
@@ -73,13 +81,42 @@ class PlaceViewModel : ViewModel() {
         )
     }
 
-
     fun setPlace(placeUiModel: PlaceUiModel) {
         this.placeUiModel.set(placeUiModel)
         tgs2600.set(placeUiModel.place.gas.tgs2600.round())
         tgs2602.set(placeUiModel.place.gas.tgs2602.round())
 
         fetchForecastData()
+
+        checkPrefs()
+    }
+
+    private fun checkPrefs() {
+        val placeId = placeUiModel.get()?.place?.id ?: return
+
+        val mySavedPlaces = prefs.getMyPlaces()
+        Timber.d("yeltayev22 $mySavedPlaces")
+
+        saved = if (mySavedPlaces.contains(placeId.toString())) {
+            heartIcon.set(R.drawable.ic_heart_filled)
+            true
+        } else {
+            heartIcon.set(R.drawable.ic_heart_stroke)
+            false
+        }
+    }
+
+    fun clickHeart() {
+        val placeId = placeUiModel.get()?.place?.id ?: return
+
+        saved = !saved
+        if (saved) {
+            prefs.addPlace(placeId)
+            heartIcon.set(R.drawable.ic_heart_filled)
+        } else {
+            prefs.removePlace(placeId)
+            heartIcon.set(R.drawable.ic_heart_stroke)
+        }
     }
 
     fun goBack() {
