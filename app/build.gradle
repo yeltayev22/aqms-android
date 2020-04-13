@@ -80,4 +80,6 @@ dependencies {
     // MultiDex
     implementation 'com.android.support:multidex:1.0.3'
 
+    // ProgressBar
+    implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.0'
 }

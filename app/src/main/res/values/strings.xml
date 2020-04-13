@@ -23,5 +23,7 @@
     <string name="info_aqi_unhealthy">Harmful for sensitive groups, reduce outdoor activities</string>
     <string name="info_aqi_very_unhealthy">Everyone can be affected. Avoid outdoor activity</string>
     <string name="info_aqi_hazardous">Serious risk of respiratory effects. Everyone should avoid outdoor activity</string>
+    <string name="label_tgs2600">TGS 2600</string>
+    <string name="label_tgs2602">TGS 2602</string>
 
 </resources>

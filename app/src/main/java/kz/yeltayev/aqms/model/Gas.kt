@@ -4,9 +4,7 @@ import java.math.BigDecimal
 
 data class Gas(
     val id: Long,
-    val hydrogen: BigDecimal,
-    val carbonMonoxide: BigDecimal,
-    val ammonia: BigDecimal,
-    val h2s: BigDecimal,
+    val tgs2600: BigDecimal,
+    val tgs2602: BigDecimal,
     val dateTime: String
 )

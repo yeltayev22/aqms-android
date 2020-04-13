@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import com.ramijemli.percentagechartview.PercentageChartView
 import kz.yeltayev.aqms.utils.PRECISION
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -69,5 +70,11 @@ object Bindings {
         if (drawableRes != 0) {
             view.setBackgroundResource(drawableRes)
         }
+    }
+
+    @BindingAdapter("pcv_progress")
+    @JvmStatic
+    fun setProgress(view: PercentageChartView, percentage: BigDecimal) {
+        view.setProgress(percentage.toFloat(), true)
     }
 }

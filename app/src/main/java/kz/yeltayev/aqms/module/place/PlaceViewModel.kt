@@ -10,13 +10,18 @@ import io.reactivex.schedulers.Schedulers
 import kz.yeltayev.aqms.api.WeatherApiServiceModule
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import kz.yeltayev.aqms.module.place.widget.WeatherForecastUiModel
+import kz.yeltayev.aqms.utils.round
 import timber.log.Timber
+import java.math.BigDecimal
 import kotlin.random.Random
 
 class PlaceViewModel : ViewModel() {
 
     val isLoading = ObservableBoolean()
     val placeUiModel = ObservableField<PlaceUiModel>()
+
+    var tgs2600 = ObservableField<BigDecimal>()
+    var tgs2602 = ObservableField<BigDecimal>()
 
     val dayOne = ObservableField<WeatherForecastUiModel>()
     val dayTwo = ObservableField<WeatherForecastUiModel>()
@@ -71,6 +76,9 @@ class PlaceViewModel : ViewModel() {
 
     fun setPlace(placeUiModel: PlaceUiModel) {
         this.placeUiModel.set(placeUiModel)
+        tgs2600.set(placeUiModel.place.gas.tgs2600.round())
+        tgs2602.set(placeUiModel.place.gas.tgs2602.round())
+
         fetchForecastData()
     }
 
