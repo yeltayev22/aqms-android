@@ -10,6 +10,9 @@ import androidx.navigation.fragment.findNavController
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.databinding.ViewPlaceBinding
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
+import kz.yeltayev.aqms.module.place.statistics.MonthStatisticsFragment
+import kz.yeltayev.aqms.module.place.statistics.WeekStatisticsFragment
+import kz.yeltayev.aqms.module.place.widget.TabFragmentAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaceFragment : Fragment() {
@@ -29,6 +32,12 @@ class PlaceFragment : Fragment() {
         )
 
         binding.vm = placeViewModel
+
+        val tabFragmentAdapter = TabFragmentAdapter(parentFragmentManager)
+        tabFragmentAdapter.addFragment(WeekStatisticsFragment(), "Week")
+        tabFragmentAdapter.addFragment(MonthStatisticsFragment(), "Month")
+        binding.viewPager.adapter = tabFragmentAdapter
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
 
         placeViewModel.navController = findNavController()
         return binding.root
