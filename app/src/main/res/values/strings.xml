@@ -3,7 +3,7 @@
 
     <string name="label_live">Live</string>
     <string name="label_statistics">Statistics</string>
-    <string name="label_profile">Profile</string>
+    <string name="label_map">Map</string>
 
     <string name="label_my_places">My Places</string>
     <string name="label_search_places">Search Places</string>

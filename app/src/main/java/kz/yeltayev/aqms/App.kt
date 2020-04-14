@@ -8,7 +8,7 @@ import kz.yeltayev.aqms.module.main.MainViewModel
 import kz.yeltayev.aqms.module.place.PlaceViewModel
 import kz.yeltayev.aqms.module.place.statistics.MonthStatisticsViewModel
 import kz.yeltayev.aqms.module.place.statistics.WeekStatisticsViewModel
-import kz.yeltayev.aqms.module.profile.ProfileViewModel
+import kz.yeltayev.aqms.module.map.MapViewModel
 import kz.yeltayev.aqms.module.searchplaces.SearchPlacesViewModel
 import kz.yeltayev.aqms.module.statistics.StatisticsViewModel
 import kz.yeltayev.aqms.utils.GeneralPreferences
@@ -30,7 +30,7 @@ class App : Application() {
         viewModel { PlaceViewModel(get()) }
 
         viewModel { StatisticsViewModel() }
-        viewModel { ProfileViewModel() }
+        viewModel { MapViewModel() }
 
         viewModel { MonthStatisticsViewModel() }
         viewModel { WeekStatisticsViewModel() }

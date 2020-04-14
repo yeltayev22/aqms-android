@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="kz.yeltayev.aqms.module.profile.ProfileViewModel" />
+            type="kz.yeltayev.aqms.module.map.MapViewModel" />
     </data>
 
     <FrameLayout
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="PROFILE"
+            android:text="MAP"
             android:textSize="36sp" />
     </FrameLayout>
 

@@ -20,7 +20,7 @@ class BaseFragment : Fragment() {
     private var navHostId: Int = -1
 
     private val rootDestinations =
-        setOf(R.id.live_dest, R.id.statistics_dest, R.id.profile_dest)
+        setOf(R.id.live_dest, R.id.statistics_dest, R.id.map_dest)
 
     private val appBarConfig = AppBarConfiguration(rootDestinations)
 

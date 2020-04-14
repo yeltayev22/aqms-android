@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
     private val mainViewModel: MainViewModel by viewModel()
 
     private val backStack = Stack<Int>()
-    private val indexToPage = mapOf(0 to R.id.live, 1 to R.id.statistics, 2 to R.id.profile)
+    private val indexToPage = mapOf(0 to R.id.live, 1 to R.id.statistics, 2 to R.id.map)
 
     // list of base destination containers
     private val fragments = listOf(
@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener,
             R.id.nav_host_statistics
         ),
         BaseFragment.newInstance(
-            R.layout.content_profile_base,
-            R.id.toolbar_profile,
-            R.id.nav_host_profile
+            R.layout.content_map_base,
+            R.id.toolbar_map,
+            R.id.nav_host_map
         )
     )
 

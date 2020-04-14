@@ -1,4 +1,4 @@
-package kz.yeltayev.aqms.module.profile
+package kz.yeltayev.aqms.module.map
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import kz.yeltayev.aqms.R
-import kz.yeltayev.aqms.databinding.ViewLiveBinding
-import kz.yeltayev.aqms.databinding.ViewProfileBinding
+import kz.yeltayev.aqms.databinding.ViewMapBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProfileFragment : Fragment() {
+class MapFragment : Fragment() {
 
-    private val profileViewModel: ProfileViewModel by viewModel()
+    private val mapViewModel: MapViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,9 +20,9 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding =
-            DataBindingUtil.inflate<ViewProfileBinding>(inflater, R.layout.view_profile, container, false)
+            DataBindingUtil.inflate<ViewMapBinding>(inflater, R.layout.view_map, container, false)
 
-        binding.vm = profileViewModel
+        binding.vm = mapViewModel
 
         return binding.root
     }

@@ -1,17 +1,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_profile"
-    app:startDestination="@id/profile_dest">
+    android:id="@+id/nav_map"
+    app:startDestination="@id/map_dest">
 
     <fragment
-        android:id="@+id/profile_dest"
-        android:name="kz.yeltayev.aqms.module.profile.ProfileFragment"
-        android:label="@string/label_profile"
-        tools:layout="@layout/view_profile">
+        android:id="@+id/map_dest"
+        android:name="kz.yeltayev.aqms.module.map.MapFragment"
+        android:label="@string/label_map"
+        tools:layout="@layout/view_map">
         <!--<action
-            android:id="@+id/action_profile_settings"
-            app:destination="@id/profile_settings_dest" />
+            android:id="@+id/action_map_settings"
+            app:destination="@id/map_settings_dest" />
         <action
             android:id="@+id/action_privacy_settings"
             app:destination="@id/privacy_settings_dest" />-->
@@ -22,9 +22,9 @@
                          .modules.settings.PrivacySettingsFragment"
         android:label="Privacy Settings" />
     <fragment
-        android:id="@+id/profile_settings_dest"
+        android:id="@+id/map_settings_dest"
         android:name="com.example.viewpagernavigation
-                         .modules.settings.ProfileSettingsFragment"
-        android:label="Profile Settings" />
+                         .modules.settings.mapSettingsFragment"
+        android:label="map Settings" />
 -->
 </navigation>
