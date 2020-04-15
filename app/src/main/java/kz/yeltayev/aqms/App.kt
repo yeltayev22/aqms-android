@@ -1,14 +1,14 @@
 package kz.yeltayev.aqms
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.api.WeatherApiServiceModule
 import kz.yeltayev.aqms.module.live.LiveViewModel
 import kz.yeltayev.aqms.module.main.MainViewModel
+import kz.yeltayev.aqms.module.map.MapViewModel
 import kz.yeltayev.aqms.module.place.PlaceViewModel
 import kz.yeltayev.aqms.module.place.statistics.MonthStatisticsViewModel
 import kz.yeltayev.aqms.module.place.statistics.WeekStatisticsViewModel
-import kz.yeltayev.aqms.module.map.MapViewModel
 import kz.yeltayev.aqms.module.searchplaces.SearchPlacesViewModel
 import kz.yeltayev.aqms.module.statistics.StatisticsViewModel
 import kz.yeltayev.aqms.utils.GeneralPreferences
@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
-class App : Application() {
+class App : MultiDexApplication() {
 
     private val viewModelModule = module {
         viewModel { MainViewModel(get()) }
@@ -30,7 +30,7 @@ class App : Application() {
         viewModel { PlaceViewModel(get()) }
 
         viewModel { StatisticsViewModel() }
-        viewModel { MapViewModel() }
+        viewModel { MapViewModel(get()) }
 
         viewModel { MonthStatisticsViewModel() }
         viewModel { WeekStatisticsViewModel() }

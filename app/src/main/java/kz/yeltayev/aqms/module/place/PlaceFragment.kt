@@ -33,11 +33,11 @@ class PlaceFragment : Fragment() {
 
         binding.vm = placeViewModel
 
-        val tabFragmentAdapter = TabFragmentAdapter(parentFragmentManager)
+        /*val tabFragmentAdapter = TabFragmentAdapter(parentFragmentManager)
         tabFragmentAdapter.addFragment(WeekStatisticsFragment(), "Week")
         tabFragmentAdapter.addFragment(MonthStatisticsFragment(), "Month")
         binding.viewPager.adapter = tabFragmentAdapter
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        binding.tabLayout.setupWithViewPager(binding.viewPager)*/
 
         placeViewModel.navController = findNavController()
         return binding.root
