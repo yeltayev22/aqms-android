@@ -51,7 +51,7 @@
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:animateLayoutChanges="true"
+            app:viewGroup_animateLayoutChanges="@{150}"
             app:srl_isRefreshing="@{vm.isLoading}"
             app:srl_onRefresh="@{vm::fetchMyPlaces}">
 

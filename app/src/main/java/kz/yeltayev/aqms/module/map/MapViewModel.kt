@@ -5,7 +5,9 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -69,8 +71,12 @@ class MapViewModel(
         }
     }
 
-    fun setGoogleMap(googleMap: GoogleMap) {
+    fun setGoogleMap(googleMap: GoogleMap, lastCameraPosition: CameraPosition?) {
         this.googleMap = googleMap
+
+        if (lastCameraPosition != null) {
+            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(lastCameraPosition))
+        }
 
         googleMap.setOnMarkerClickListener { marker ->
             placeUiModel.set(marker.tag as PlaceUiModel)

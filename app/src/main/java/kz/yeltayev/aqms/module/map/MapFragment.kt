@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.CameraPosition
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.databinding.ViewMapBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,6 +21,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private val mapViewModel: MapViewModel by viewModel()
 
     private var mapView: MapView? = null
+
+    private var lastCameraPosition: CameraPosition? = null
+    private lateinit var googleMap: GoogleMap
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,9 +49,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView?.onResume()
     }
 
-
     override fun onPause() {
         super.onPause()
+        lastCameraPosition = googleMap.cameraPosition
         mapView?.onPause()
     }
 
@@ -62,6 +66,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        mapViewModel.setGoogleMap(googleMap)
+        this.googleMap = googleMap
+        mapViewModel.setGoogleMap(googleMap, lastCameraPosition)
     }
 }
