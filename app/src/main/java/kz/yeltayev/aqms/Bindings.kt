@@ -1,7 +1,9 @@
 package kz.yeltayev.aqms
 
+import android.animation.LayoutTransition
 import android.graphics.Color
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -91,5 +93,25 @@ object Bindings {
     @JvmStatic
     fun setIsRefreshing(view: SwipeRefreshLayout, isRefreshing: Boolean) {
         view.isRefreshing = isRefreshing
+    }
+
+    @BindingAdapter("show")
+    @JvmStatic
+    fun setVisibility(view: View, isVisible: Boolean) {
+        if (isVisible) {
+            view.visibility = View.VISIBLE
+        } else {
+            view.visibility = View.GONE
+        }
+    }
+
+    @BindingAdapter("viewGroup_animateLayoutChanges")
+    @JvmStatic
+    fun animateLayoutChanges(viewGroup: ViewGroup, duration: Long) {
+        val layoutTransition = LayoutTransition()
+        if (duration > 0L) {
+            layoutTransition.setDuration(duration)
+        }
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
     }
 }

@@ -1,6 +1,8 @@
 package kz.yeltayev.aqms.module.map
 
 import androidx.core.os.bundleOf
+import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.google.android.gms.maps.GoogleMap
@@ -20,6 +22,9 @@ class MapViewModel(
 ) : ViewModel() {
 
     lateinit var navController: NavController
+
+    val isPlaceShown = ObservableBoolean(false)
+    var placeUiModel = ObservableField<PlaceUiModel>()
 
     private val serviceModule = ApiServiceModule()
     private val disposable = CompositeDisposable()
@@ -58,8 +63,7 @@ class MapViewModel(
             val lat = item.place.latitude.toDouble()
             val lon = item.place.longitude.toDouble()
 
-            val markerOptions = MarkerOptions().position(LatLng(lat, lon)).title(item.place.city)
-                .snippet(item.place.aqi.toString())
+            val markerOptions = MarkerOptions().position(LatLng(lat, lon))
             val marker = googleMap?.addMarker(markerOptions)
             marker?.tag = item
         }
@@ -67,15 +71,24 @@ class MapViewModel(
 
     fun setGoogleMap(googleMap: GoogleMap) {
         this.googleMap = googleMap
-        googleMap.setOnInfoWindowClickListener { marker ->
-            val placeUiModel = marker.tag as PlaceUiModel
-            onPlaceClicked(placeUiModel)
+
+        googleMap.setOnMarkerClickListener { marker ->
+            placeUiModel.set(marker.tag as PlaceUiModel)
+            isPlaceShown.set(true)
+
+            return@setOnMarkerClickListener true
+        }
+
+        googleMap.setOnMapClickListener {
+            isPlaceShown.set(false)
+            placeUiModel.set(null)
         }
         addMarkers(placeUiList)
     }
 
-    private fun onPlaceClicked(item: PlaceUiModel) {
-        val bundle = bundleOf("placeUiModel" to item)
+    fun onPlaceClicked() {
+        val placeUiModel = placeUiModel.get() ?: return
+        val bundle = bundleOf("placeUiModel" to placeUiModel)
         navController.navigate(R.id.place_dest, bundle)
     }
 
