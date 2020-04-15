@@ -7,18 +7,20 @@
         <variable
             name="vm"
             type="kz.yeltayev.aqms.module.live.LiveViewModel" />
-
-        <import type="android.view.View" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:background="@color/white"
+            android:elevation="4dp"
             android:padding="16dp">
 
             <TextView
@@ -51,19 +53,19 @@
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:viewGroup_animateLayoutChanges="@{150}"
             app:srl_isRefreshing="@{vm.isLoading}"
-            app:srl_onRefresh="@{vm::fetchMyPlaces}">
+            app:srl_onRefresh="@{vm::fetchMyPlaces}"
+            app:viewGroup_animateLayoutChanges="@{150}">
 
             <kz.yeltayev.aqms.widget.customrecyclerview.CustomRecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
-                android:visibility="@{vm.isLoading ? View.GONE : View.VISIBLE}"
                 app:rv_dividerDrawable="@color/transparent"
                 app:rv_itemLayout="@layout/item_my_place"
                 app:rv_items="@{vm.places}"
-                app:rv_viewModel="@{vm}" />
+                app:rv_viewModel="@{vm}"
+                app:show="@{!vm.isLoading()}" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 </layout>

@@ -7,8 +7,14 @@ import kz.yeltayev.aqms.utils.toKiloPascal
 import java.io.Serializable
 
 class PlaceUiModel(
-    val place: Place
+    val place: Place,
+    val position: Int = 0
 ) : Serializable {
+
+    val placeLabel: String
+        get() {
+            return place.city + ", " + place.country
+        }
 
     val temperatureLabel: String
         get() {

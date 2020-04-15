@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.databinding.ViewStatisticsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,10 +21,16 @@ class StatisticsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding =
-            DataBindingUtil.inflate<ViewStatisticsBinding>(inflater, R.layout.view_statistics, container, false)
+            DataBindingUtil.inflate<ViewStatisticsBinding>(
+                inflater,
+                R.layout.view_statistics,
+                container,
+                false
+            )
 
         binding.vm = statisticsViewModel
 
+        statisticsViewModel.navController = findNavController()
         return binding.root
     }
 }

@@ -7,18 +7,89 @@
         <variable
             name="vm"
             type="kz.yeltayev.aqms.module.statistics.StatisticsViewModel" />
+
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="STATISTICS"
-            android:textSize="36sp" />
-    </FrameLayout>
+            android:layout_marginBottom="4dp"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:padding="16dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/label_ranking"
+                android:textColor="@color/dark"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="#"
+                android:textColor="@color/dark"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_weight="4"
+                android:text="@string/label_location"
+                android:textColor="@color/dark"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="@string/label_aqi"
+                android:textColor="@color/dark"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <kz.yeltayev.aqms.widget.customrecyclerview.CustomRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:rv_dividerDrawable="@color/transparent"
+            app:rv_itemLayout="@layout/item_rating_place"
+            app:rv_items="@{vm.places}"
+            app:rv_viewModel="@{vm}"
+            app:show="@{!vm.isLoading()}" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:show="@{vm.isLoading()}">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true" />
+        </FrameLayout>
+    </LinearLayout>
 </layout>
