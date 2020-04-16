@@ -6,6 +6,6 @@
     <corners android:radius="20dp" />
 
     <!-- color of the selected tab -->
-    <solid android:color="#fff" />
+    <solid android:color="#103A58" />
 
 </shape>

@@ -1,6 +1,7 @@
 package kz.yeltayev.aqms.module.place
 
 import android.annotation.SuppressLint
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
@@ -19,7 +20,6 @@ import kz.yeltayev.aqms.model.Gas
 import kz.yeltayev.aqms.model.Weather
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import kz.yeltayev.aqms.module.place.widget.DAYS_IN_WEEK
-import kz.yeltayev.aqms.module.place.widget.Filter
 import kz.yeltayev.aqms.module.place.widget.HOURS_IN_DAY
 import kz.yeltayev.aqms.module.place.widget.WeatherForecastUiModel
 import kz.yeltayev.aqms.utils.GeneralPreferences
@@ -30,10 +30,13 @@ import java.math.BigDecimal
 import java.text.SimpleDateFormat
 import kotlin.random.Random
 
+
 class PlaceViewModel(
     private val prefs: GeneralPreferences,
     private val res: ResourceProvider
 ) : ViewModel() {
+
+    private lateinit var fragment: PlaceFragment
 
     val isLoading = ObservableBoolean()
     val placeUiModel = ObservableField<PlaceUiModel>()
@@ -67,7 +70,15 @@ class PlaceViewModel(
     private val weathers = ObservableField<List<Weather>>()
     private val gases = ObservableField<List<Gas>>()
 
-    private var selectedFilter: Filter = Filter.TEMPERATURE
+    val selectedFilter = ObservableField(res.getString(R.string.label_temperature))
+
+    private val filters = arrayOf(
+        res.getString(R.string.label_temperature),
+        res.getString(R.string.label_pressure),
+        res.getString(R.string.label_humidity),
+        res.getString(R.string.label_tgs2600),
+        res.getString(R.string.label_tgs2602)
+    )
     /* WEEK STATISTICS */
 
     private fun fetchForecastData() {
@@ -134,7 +145,7 @@ class PlaceViewModel(
         }
     }
 
-    fun clickHeart() {
+    fun onSaveClicked() {
         val placeId = placeUiModel.get()?.place?.id ?: return
 
         saved = !saved
@@ -145,6 +156,24 @@ class PlaceViewModel(
             prefs.removePlace(placeId)
             heartIcon.set(R.drawable.ic_heart_stroke)
         }
+    }
+
+    fun onFilterClicked() {
+
+        val context = fragment.context ?: return
+
+        val dialogBuilder = AlertDialog.Builder(context)
+        dialogBuilder
+            .setSingleChoiceItems(
+                filters,
+                filters.indexOf(selectedFilter.get())
+            ) { dialog, which ->
+                selectedFilter.set(filters[which])
+                dialog.dismiss()
+            }
+            .setNegativeButton(res.getString(R.string.label_cancel), null)
+            .setTitle(res.getString(R.string.label_select_filter))
+            .show()
     }
 
     private fun fetchWeatherData() {
@@ -220,6 +249,10 @@ class PlaceViewModel(
 
     fun goBack() {
         navController.popBackStack()
+    }
+
+    fun setFragment(placeFragment: PlaceFragment) {
+        fragment = placeFragment
     }
 }
 

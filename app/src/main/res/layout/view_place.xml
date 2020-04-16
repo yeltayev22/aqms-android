@@ -71,7 +71,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:onClick="@{() -> vm.clickHeart()}"
+                android:onClick="@{() -> vm.onSaveClicked()}"
                 android:padding="8dp">
 
                 <ImageView
@@ -84,6 +84,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             app:show="@{vm.isLoading()}">
 
             <ProgressBar
@@ -867,6 +868,34 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/shape_filter_rounded"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="@{() -> vm.onFilterClicked()}">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center_vertical"
+                        android:src="@drawable/ic_heart_filled"
+                        android:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:text="@{vm.selectedFilter}"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"
                     android:layout_width="wrap_content"
@@ -879,13 +908,13 @@
                     app:tabPaddingEnd="16dp"
                     app:tabPaddingStart="16dp"
                     app:tabRippleColor="@null"
-                    app:tabSelectedTextColor="@color/colorAccent"
+                    app:tabSelectedTextColor="@color/white"
                     app:tabTextAppearance="@style/TabTextAppearance" />
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp" />
+                    android:layout_height="250dp" />
             </LinearLayout>
 
         </ScrollView>

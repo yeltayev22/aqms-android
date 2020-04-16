@@ -16,7 +16,7 @@
     <color name="transparentOverlayWhite">#e6ffffff</color>
     <color name="transparentOverlayBlack">#64000000</color>
 
-    <color name="aqi_good">#B5D66D</color>
+    <color name="aqi_good">#C5E187</color>
     <color name="aqi_moderate">#FFDF57</color>
     <color name="aqi_unhealthy_for_sensitive">#F6A76D</color>
     <color name="aqi_unhealthy">#F4737A</color>
