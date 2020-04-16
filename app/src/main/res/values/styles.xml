@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -14,21 +14,5 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">#fff</item>
         <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="Dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:textColor">@color/dark</item>
-        <item name="android:textColorPrimary">@color/colorPrimary</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:colorControlHighlight" tools:targetApi="lollipop">
-            @color/transparentOverlayWhite
-        </item>
-        <item name="android:buttonStyle">@style/DialogButtonStyle</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="DialogButtonStyle">
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textSize">8sp</item>
     </style>
 </resources>
