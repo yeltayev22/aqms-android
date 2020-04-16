@@ -4,4 +4,8 @@ import androidx.lifecycle.ViewModel
 
 class MonthStatisticsViewModel : ViewModel() {
 
+
+    fun setPlaceId(placeId: Long) {
+
+    }
 }

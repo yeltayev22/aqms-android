@@ -10,7 +10,9 @@ import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.databinding.ViewMonthStatisticsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MonthStatisticsFragment() : Fragment() {
+class MonthStatisticsFragment(
+    private val placeId: Long
+) : Fragment() {
 
     private val monthStatisticsViewModel: MonthStatisticsViewModel by viewModel()
 

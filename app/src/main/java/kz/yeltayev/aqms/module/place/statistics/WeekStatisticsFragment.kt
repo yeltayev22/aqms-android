@@ -10,7 +10,9 @@ import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.databinding.ViewWeekStatisticsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class WeekStatisticsFragment : Fragment() {
+class WeekStatisticsFragment(
+    private val placeId: Long
+) : Fragment() {
 
     private val weekStatisticsViewModel: WeekStatisticsViewModel by viewModel()
 
@@ -32,6 +34,6 @@ class WeekStatisticsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        monthStatisticsViewModel.setPlace(placeUiModel)
+        weekStatisticsViewModel.setPlaceId(placeId)
     }
 }

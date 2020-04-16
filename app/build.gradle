@@ -84,6 +84,7 @@ dependencies {
     // UI Libraries
     implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     // Goole Maps stuff
     implementation 'com.google.maps:google-maps-services:0.2.4'

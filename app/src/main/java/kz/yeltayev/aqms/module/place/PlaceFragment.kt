@@ -19,6 +19,8 @@ class PlaceFragment : Fragment() {
 
     private val placeViewModel: PlaceViewModel by viewModel()
 
+    private lateinit var binding: ViewPlaceBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,14 +32,8 @@ class PlaceFragment : Fragment() {
             container,
             false
         )
-
+        this.binding = binding
         binding.vm = placeViewModel
-
-        /*val tabFragmentAdapter = TabFragmentAdapter(parentFragmentManager)
-        tabFragmentAdapter.addFragment(WeekStatisticsFragment(), "Week")
-        tabFragmentAdapter.addFragment(MonthStatisticsFragment(), "Month")
-        binding.viewPager.adapter = tabFragmentAdapter
-        binding.tabLayout.setupWithViewPager(binding.viewPager)*/
 
         placeViewModel.navController = findNavController()
         return binding.root
@@ -46,5 +42,11 @@ class PlaceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val placeUiModel = arguments?.get("placeUiModel") as PlaceUiModel
         placeViewModel.setPlace(placeUiModel)
+
+        val tabFragmentAdapter = TabFragmentAdapter(parentFragmentManager)
+        tabFragmentAdapter.addFragment(WeekStatisticsFragment(placeUiModel.place.id), "Week")
+        tabFragmentAdapter.addFragment(MonthStatisticsFragment(placeUiModel.place.id), "Month")
+        binding.viewPager.adapter = tabFragmentAdapter
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 }

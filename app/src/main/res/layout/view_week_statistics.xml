@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,14 +11,16 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="WEEk"
-            android:textSize="36sp" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/bar_chart"
+            android:layout_width="match_parent"
+            android:layout_height="177dp"
+            app:barChart_data="@{vm.barData}"
+            app:barChart_maxValue="@{vm.maxValue}"
+            app:barChart_noDataText="@{@string/label_no_week_data}"
+            app:barChart_xAxis="@{vm.xAxis}" />
     </FrameLayout>
 
 </layout>

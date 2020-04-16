@@ -28,4 +28,26 @@
     <string name="label_location">Location</string>
     <string name="label_ranking">Ranking</string>
 
+    <string name="label_no_week_data">No data for the last week</string>
+
+    <string name="day_short_1">Mon</string>
+    <string name="day_short_2">Tue</string>
+    <string name="day_short_3">Wed</string>
+    <string name="day_short_4">Thu</string>
+    <string name="day_short_5">Fri</string>
+    <string name="day_short_6">Sun</string>
+    <string name="day_short_7">Sat</string>
+
+    <string name="month_short_01">Jan</string>
+    <string name="month_short_02">Feb</string>
+    <string name="month_short_03">Mar</string>
+    <string name="month_short_04">Apr</string>
+    <string name="month_short_05">May</string>
+    <string name="month_short_06">Jun</string>
+    <string name="month_short_07">Jul</string>
+    <string name="month_short_08">Aug</string>
+    <string name="month_short_09">Sep</string>
+    <string name="month_short_10">Oct</string>
+    <string name="month_short_11">Nov</string>
+    <string name="month_short_12">Dec</string>
 </resources>

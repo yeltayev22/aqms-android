@@ -33,7 +33,7 @@ class App : MultiDexApplication() {
         viewModel { MapViewModel(get()) }
 
         viewModel { MonthStatisticsViewModel() }
-        viewModel { WeekStatisticsViewModel() }
+        viewModel { WeekStatisticsViewModel(get()) }
 
     }
 

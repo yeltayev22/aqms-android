@@ -885,7 +885,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp" />
+                    android:layout_height="500dp" />
             </LinearLayout>
 
         </ScrollView>
