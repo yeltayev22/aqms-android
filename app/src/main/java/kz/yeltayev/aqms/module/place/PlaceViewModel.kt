@@ -1,25 +1,38 @@
 package kz.yeltayev.aqms.module.place
 
+import android.annotation.SuppressLint
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kz.yeltayev.aqms.R
+import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.api.WeatherApiServiceModule
+import kz.yeltayev.aqms.model.Gas
+import kz.yeltayev.aqms.model.Weather
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
+import kz.yeltayev.aqms.module.place.widget.DAYS_IN_WEEK
+import kz.yeltayev.aqms.module.place.widget.Filter
+import kz.yeltayev.aqms.module.place.widget.HOURS_IN_DAY
 import kz.yeltayev.aqms.module.place.widget.WeatherForecastUiModel
 import kz.yeltayev.aqms.utils.GeneralPreferences
+import kz.yeltayev.aqms.utils.ResourceProvider
 import kz.yeltayev.aqms.utils.round
 import timber.log.Timber
 import java.math.BigDecimal
+import java.text.SimpleDateFormat
 import kotlin.random.Random
 
 class PlaceViewModel(
-    private val prefs: GeneralPreferences
+    private val prefs: GeneralPreferences,
+    private val res: ResourceProvider
 ) : ViewModel() {
 
     val isLoading = ObservableBoolean()
@@ -44,6 +57,19 @@ class PlaceViewModel(
 
     private val disposable = CompositeDisposable()
 
+    /* WEEK STATISTICS */
+    val barData = ObservableField<BarData>()
+    val maxValue = ObservableInt()
+    val xAxis = ObservableField<List<String>>()
+
+    private val serviceModule = ApiServiceModule()
+
+    private val weathers = ObservableField<List<Weather>>()
+    private val gases = ObservableField<List<Gas>>()
+
+    private var selectedFilter: Filter = Filter.TEMPERATURE
+    /* WEEK STATISTICS */
+
     private fun fetchForecastData() {
         isLoading.set(true)
         val weatherService = weatherApiServiceModule.getWeatherService()
@@ -52,7 +78,7 @@ class PlaceViewModel(
             WEATHER_BIT_API_KEY,
             place.latitude,
             place.longitude,
-            FORECAST_DAYS_COUNT
+            DAYS_IN_WEEK
         )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -87,6 +113,8 @@ class PlaceViewModel(
         tgs2602.set(placeUiModel.place.gas.tgs2602.round())
 
         fetchForecastData()
+        fetchWeatherData()
+        fetchGasData()
 
         checkPrefs()
     }
@@ -119,10 +147,80 @@ class PlaceViewModel(
         }
     }
 
+    private fun fetchWeatherData() {
+        val placeService = serviceModule.getPlaceService()
+        val placeId = placeUiModel.get()?.place?.id ?: return
+
+        disposable.add(
+            placeService.fetchWeatherById(placeId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess { response ->
+                    val result = response.body() ?: return@doOnSuccess
+                    if (result.isNotEmpty()) {
+                        drawBarChart(result)
+                    }
+                }
+                .doOnError { error ->
+                    Timber.d("yeltayev22 $error")
+                }
+                .subscribe()
+        )
+    }
+
+    private fun fetchGasData() {
+
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun drawBarChart(result: List<Weather>) {
+        val barEntries = mutableListOf<BarEntry>()
+        result.sortedByDescending { it.dateTime }
+
+        var index = 0
+        val xAxis = mutableListOf<String>()
+        for (i in 0 until DAYS_IN_WEEK * HOURS_IN_DAY step HOURS_IN_DAY) {
+
+            val value = result[i].temperature
+            barEntries.add(
+                BarEntry(
+                    (index + 1).toFloat(),
+                    value.toFloat()
+                )
+            )
+            index = index.inc()
+
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+            val date = dateFormat.parse(result[i].dateTime)
+            val dayOfWeekIntFormat = SimpleDateFormat("u")
+            val dayOfWeek = dayOfWeekIntFormat.format(date)
+
+            xAxis.add(res.getShortDayName(Integer.parseInt(dayOfWeek)))
+        }
+
+        this.xAxis.set(xAxis)
+
+        val maxCount = result.maxBy { it.temperature }?.temperature?.toInt()
+        if (maxCount != null) {
+            maxValue.set(maxCount)
+        }
+
+        val barDataSet = BarDataSet(barEntries.sortedWith(compareBy { it.x }), "")
+        barDataSet.setDrawValues(false)
+        barDataSet.highLightColor = res.getColor(R.color.chartHighlight)
+        val data = BarData(barDataSet)
+        data.barWidth = 0.19f
+
+        if (barEntries.isNotEmpty()) {
+            barData.set(data)
+        } else {
+            barData.set(null)
+        }
+    }
+
     fun goBack() {
         navController.popBackStack()
     }
 }
 
 private const val WEATHER_BIT_API_KEY = "a3507d96676d41dabde682c792dc489a"
-private const val FORECAST_DAYS_COUNT = 7

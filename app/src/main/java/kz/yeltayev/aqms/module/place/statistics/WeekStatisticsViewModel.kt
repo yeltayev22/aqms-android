@@ -14,6 +14,9 @@ import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.model.Gas
 import kz.yeltayev.aqms.model.Weather
+import kz.yeltayev.aqms.module.place.widget.DAYS_IN_WEEK
+import kz.yeltayev.aqms.module.place.widget.Filter
+import kz.yeltayev.aqms.module.place.widget.HOURS_IN_DAY
 import kz.yeltayev.aqms.utils.ResourceProvider
 import timber.log.Timber
 import java.text.SimpleDateFormat

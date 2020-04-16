@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="kz.yeltayev.aqms.module.place.statistics.WeekStatisticsViewModel" />
+            type="kz.yeltayev.aqms.module.place.PlaceViewModel" />
     </data>
 
     <FrameLayout

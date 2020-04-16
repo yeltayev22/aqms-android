@@ -23,18 +23,14 @@ import org.koin.dsl.module
 class App : MultiDexApplication() {
 
     private val viewModelModule = module {
-        viewModel { MainViewModel(get()) }
+        single { MainViewModel(get()) }
 
-        viewModel { LiveViewModel(get(), get()) }
-        viewModel { SearchPlacesViewModel() }
-        viewModel { PlaceViewModel(get()) }
+        single { LiveViewModel(get(), get()) }
+        single { SearchPlacesViewModel() }
+        single { PlaceViewModel(get(), get()) }
 
-        viewModel { StatisticsViewModel() }
-        viewModel { MapViewModel(get()) }
-
-        viewModel { MonthStatisticsViewModel() }
-        viewModel { WeekStatisticsViewModel(get()) }
-
+        single { StatisticsViewModel() }
+        single { MapViewModel(get()) }
     }
 
     private val listOfModules = module {

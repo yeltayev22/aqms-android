@@ -1,4 +1,4 @@
-package kz.yeltayev.aqms.module.place.statistics
+package kz.yeltayev.aqms.module.place.widget
 
 enum class Filter {
     TEMPERATURE,
@@ -10,3 +10,4 @@ enum class Filter {
 
 const val HOURS_IN_DAY = 24
 const val DAYS_IN_WEEK = 7
+const val DAYS_IN_MONTH = 30

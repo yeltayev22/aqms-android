@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.databinding.ViewMonthStatisticsBinding
+import kz.yeltayev.aqms.module.place.PlaceViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MonthStatisticsFragment(
-    private val placeId: Long
-) : Fragment() {
+class MonthStatisticsFragment : Fragment() {
 
-    private val monthStatisticsViewModel: MonthStatisticsViewModel by viewModel()
+    private val placeViewModel: PlaceViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,15 +25,11 @@ class MonthStatisticsFragment(
             inflater,
             R.layout.view_month_statistics,
             container,
-            false
+            true
         )
 
-        binding.vm = monthStatisticsViewModel
+        binding.vm = placeViewModel
 
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        monthStatisticsViewModel.setPlace(placeUiModel)
     }
 }

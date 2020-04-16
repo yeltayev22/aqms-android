@@ -2,28 +2,32 @@ package kz.yeltayev.aqms.module.place.widget
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
+import kz.yeltayev.aqms.module.place.statistics.MonthStatisticsFragment
+import kz.yeltayev.aqms.module.place.statistics.WeekStatisticsFragment
 
-class TabFragmentAdapter(fragmentManager: FragmentManager) :
-    FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class TabFragmentAdapter(
+    fragmentManager: FragmentManager
+) : FragmentStatePagerAdapter(fragmentManager) {
 
-    private val fragmentList: MutableList<Fragment> = ArrayList()
-    private val fragmentTitleList: MutableList<String> = ArrayList()
-
-    override fun getItem(i: Int): Fragment {
-        return fragmentList[i]
+    override fun getItem(position: Int): Fragment {
+        return if (position == 0) {
+            WeekStatisticsFragment()
+        } else {
+            MonthStatisticsFragment()
+        }
     }
 
     override fun getCount(): Int {
-        return fragmentList.size
+        return 2
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return fragmentTitleList[position]
+        return when (position) {
+            0 -> "Week"
+            1 -> "Month"
+            else -> null
+        }
     }
 
-    fun addFragment(fragment: Fragment, title: String) {
-        fragmentList.add(fragment)
-        fragmentTitleList.add(title)
-    }
 }
