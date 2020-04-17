@@ -29,6 +29,7 @@
     <string name="label_ranking">Ranking</string>
 
     <string name="label_no_week_data">No data for the last week</string>
+    <string name="label_no_month_data">No data for the last month</string>
 
     <string name="day_short_1">Mon</string>
     <string name="day_short_2">Tue</string>

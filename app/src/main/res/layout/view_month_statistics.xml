@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,14 +11,17 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="MONTH"
-            android:textSize="36sp" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/bar_chart"
+            android:layout_width="match_parent"
+            android:layout_height="177dp"
+            app:barChart_data="@{vm.monthBarData}"
+            app:barChart_maxValue="@{vm.monthMaxValue}"
+            app:barChart_yAxis="@{vm.monthYAxis}"
+            app:barChart_noDataText="@{@string/label_no_month_data}"
+            app:barChart_xAxis="@{vm.monthXAxis}" />
     </FrameLayout>
 
 </layout>

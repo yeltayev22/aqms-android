@@ -17,11 +17,11 @@
             android:id="@+id/bar_chart"
             android:layout_width="match_parent"
             android:layout_height="177dp"
-            app:barChart_data="@{vm.barData}"
-            app:barChart_maxValue="@{vm.maxValue}"
-            app:barChart_yAxis="@{vm.yAxis}"
+            app:barChart_data="@{vm.weekBarData}"
+            app:barChart_maxValue="@{vm.weekMaxValue}"
+            app:barChart_yAxis="@{vm.weekYAxis}"
             app:barChart_noDataText="@{@string/label_no_week_data}"
-            app:barChart_xAxis="@{vm.xAxis}" />
+            app:barChart_xAxis="@{vm.weekXAxis}" />
     </FrameLayout>
 
 </layout>
