@@ -11,6 +11,7 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.formatter.ValueFormatter
 import kz.yeltayev.aqms.widget.chart.CustomMarkerView
 import kz.yeltayev.aqms.widget.chart.RoundedBarRenderer
+import kotlin.math.roundToInt
 
 private const val ANIM_DURATION = 600
 
@@ -26,7 +27,7 @@ object ChartBindings {
 
         mPaint.shader = LinearGradient(
             0f, 0f, 0f, barChart.height.toFloat(),
-            intArrayOf(Color.parseColor("#4988F3"), Color.parseColor("#1E67E4")),
+            intArrayOf(Color.parseColor("#103A58"), Color.parseColor("#103A58")),
             floatArrayOf(0f, 2f), Shader.TileMode.CLAMP
         )
 
@@ -36,8 +37,10 @@ object ChartBindings {
         barChart.animateY(ANIM_DURATION)
 
         barChart.xAxis.gridColor = android.R.color.transparent
-        barChart.axisLeft.isEnabled = false
+        barChart.xAxis.textColor = R.color.dark
+        barChart.axisLeft.isEnabled = true
         barChart.axisRight.isEnabled = false
+        barChart.axisLeft.axisMinimum = 0f
 
         barChart.isDoubleTapToZoomEnabled = false
         barChart.setPinchZoom(false)
@@ -77,6 +80,15 @@ object ChartBindings {
         }
     }
 
+    @BindingAdapter("barChart_yAxis")
+    @JvmStatic
+    fun setYAxis(barChart: BarChart, xAxisValues: List<Float>?) {
+        if (xAxisValues != null) {
+            barChart.axisLeft.valueFormatter = MyYAxisValueFormatter(xAxisValues)
+            barChart.invalidate()
+        }
+    }
+
     @BindingAdapter("barChart_noDataText")
     @JvmStatic
     fun setBarChartNoDataText(barChart: BarChart, text: String?) {
@@ -95,5 +107,12 @@ private class MyXAxisValueFormatter(private val values: List<String>) : ValueFor
 
     override fun getAxisLabel(value: Float, axis: AxisBase?): String {
         return values[value.toInt() - 1]
+    }
+}
+
+private class MyYAxisValueFormatter(private val values: List<Float>) : ValueFormatter() {
+
+    override fun getAxisLabel(value: Float, axis: AxisBase?): String {
+        return value.roundToInt().toString()
     }
 }

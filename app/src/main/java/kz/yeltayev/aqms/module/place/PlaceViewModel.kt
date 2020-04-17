@@ -19,6 +19,7 @@ import kz.yeltayev.aqms.api.WeatherApiServiceModule
 import kz.yeltayev.aqms.model.Gas
 import kz.yeltayev.aqms.model.Weather
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
+import kz.yeltayev.aqms.module.place.widget.BarEntryData
 import kz.yeltayev.aqms.module.place.widget.DAYS_IN_WEEK
 import kz.yeltayev.aqms.module.place.widget.HOURS_IN_DAY
 import kz.yeltayev.aqms.module.place.widget.WeatherForecastUiModel
@@ -64,6 +65,7 @@ class PlaceViewModel(
     val barData = ObservableField<BarData>()
     val maxValue = ObservableInt()
     val xAxis = ObservableField<List<String>>()
+    val yAxis = ObservableField<List<Float>>()
 
     private val serviceModule = ApiServiceModule()
 
@@ -159,7 +161,6 @@ class PlaceViewModel(
     }
 
     fun onFilterClicked() {
-
         val context = fragment.context ?: return
 
         val dialogBuilder = AlertDialog.Builder(context)
@@ -167,8 +168,14 @@ class PlaceViewModel(
             .setSingleChoiceItems(
                 filters,
                 filters.indexOf(selectedFilter.get())
-            ) { dialog, which ->
-                selectedFilter.set(filters[which])
+            ) { dialog, position ->
+                selectedFilter.set(filters[position])
+
+                val data = getBarEntryDataByFilter()
+                if (data != null) {
+                    drawBarChart(data)
+                }
+
                 dialog.dismiss()
             }
             .setNegativeButton(res.getString(R.string.label_cancel), null)
@@ -186,8 +193,11 @@ class PlaceViewModel(
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess { response ->
                     val result = response.body() ?: return@doOnSuccess
-                    if (result.isNotEmpty()) {
-                        drawBarChart(result)
+                    weathers.set(result)
+
+                    val data = getBarEntryDataByFilter()
+                    if (data != null) {
+                        drawBarChart(data)
                     }
                 }
                 .doOnError { error ->
@@ -198,23 +208,39 @@ class PlaceViewModel(
     }
 
     private fun fetchGasData() {
+        val placeService = serviceModule.getPlaceService()
+        val placeId = placeUiModel.get()?.place?.id ?: return
 
+        disposable.add(
+            placeService.fetchGasesById(placeId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSuccess { response ->
+                    val result = response.body() ?: return@doOnSuccess
+                    gases.set(result)
+                }
+                .doOnError { error ->
+                    Timber.d("yeltayev22 $error")
+                }
+                .subscribe()
+        )
     }
 
     @SuppressLint("SimpleDateFormat")
-    private fun drawBarChart(result: List<Weather>) {
+    private fun drawBarChart(result: List<BarEntryData>) {
         val barEntries = mutableListOf<BarEntry>()
         result.sortedByDescending { it.dateTime }
 
         var index = 0
         val xAxis = mutableListOf<String>()
+        val yAxis = mutableListOf<Float>()
         for (i in 0 until DAYS_IN_WEEK * HOURS_IN_DAY step HOURS_IN_DAY) {
 
-            val value = result[i].temperature
+            val value = result[i].value
             barEntries.add(
                 BarEntry(
                     (index + 1).toFloat(),
-                    value.toFloat()
+                    value
                 )
             )
             index = index.inc()
@@ -225,18 +251,20 @@ class PlaceViewModel(
             val dayOfWeek = dayOfWeekIntFormat.format(date)
 
             xAxis.add(res.getShortDayName(Integer.parseInt(dayOfWeek)))
+            yAxis.add(value)
         }
 
         this.xAxis.set(xAxis)
+        this.yAxis.set(yAxis)
 
-        val maxCount = result.maxBy { it.temperature }?.temperature?.toInt()
+        val maxCount = result.maxBy { it.value }?.value?.toInt()
         if (maxCount != null) {
             maxValue.set(maxCount)
         }
 
         val barDataSet = BarDataSet(barEntries.sortedWith(compareBy { it.x }), "")
         barDataSet.setDrawValues(false)
-        barDataSet.highLightColor = res.getColor(R.color.chartHighlight)
+        barDataSet.highLightColor = res.getColor(R.color.darkBlue)
         val data = BarData(barDataSet)
         data.barWidth = 0.19f
 
@@ -244,6 +272,29 @@ class PlaceViewModel(
             barData.set(data)
         } else {
             barData.set(null)
+        }
+    }
+
+    private fun getBarEntryDataByFilter(): List<BarEntryData>? {
+        val weathers = weathers.get() ?: return null
+        val gases = gases.get() ?: return null
+        return when (selectedFilter.get()) {
+            res.getString(R.string.label_temperature) -> {
+                weathers.map { BarEntryData(it.temperature.toFloat(), it.dateTime) }
+            }
+            res.getString(R.string.label_pressure) -> {
+                weathers.map { BarEntryData(it.pressure.toFloat(), it.dateTime) }
+            }
+            res.getString(R.string.label_humidity) -> {
+                weathers.map { BarEntryData(it.humidity.toFloat(), it.dateTime) }
+            }
+            res.getString(R.string.label_tgs2600) -> {
+                gases.map { BarEntryData(it.tgs2600.toFloat(), it.dateTime) }
+            }
+            res.getString(R.string.label_tgs2602) -> {
+                gases.map { BarEntryData(it.tgs2602.toFloat(), it.dateTime) }
+            }
+            else -> null
         }
     }
 

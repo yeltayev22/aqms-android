@@ -19,6 +19,7 @@
             android:layout_height="177dp"
             app:barChart_data="@{vm.barData}"
             app:barChart_maxValue="@{vm.maxValue}"
+            app:barChart_yAxis="@{vm.yAxis}"
             app:barChart_noDataText="@{@string/label_no_week_data}"
             app:barChart_xAxis="@{vm.xAxis}" />
     </FrameLayout>

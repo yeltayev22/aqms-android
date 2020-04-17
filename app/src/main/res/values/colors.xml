@@ -7,6 +7,7 @@
     <color name="statusBar">#FFFDFD</color>
     <color name="gray">#4F4F6F</color>
     <color name="grayLight">#E5E5E5</color>
+    <color name="gridColor">#6E6E6E</color>
 
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
@@ -24,4 +25,5 @@
     <color name="aqi_hazardous">#B27E8B</color>
 
     <color name="chartHighlight">#4988F3</color>
+    <color name="darkBlue">#103A58</color>
 </resources>
