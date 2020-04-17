@@ -28,7 +28,6 @@ import java.math.BigDecimal
 import java.text.SimpleDateFormat
 import kotlin.random.Random
 
-
 class PlaceViewModel(
     private val prefs: GeneralPreferences,
     private val res: ResourceProvider
@@ -63,7 +62,6 @@ class PlaceViewModel(
     val weekMaxValue = ObservableInt()
     val weekXAxis = ObservableField<List<String>>()
     val weekYAxis = ObservableField<List<Float>>()
-
 
     val monthBarData = ObservableField<BarData>()
     val monthMaxValue = ObservableInt()
