@@ -1,6 +1,7 @@
 package kz.yeltayev.aqms
 
 import android.graphics.Color
+import android.graphics.DashPathEffect
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import androidx.databinding.BindingAdapter
@@ -38,8 +39,11 @@ object ChartBindings {
 
         barChart.xAxis.gridColor = android.R.color.transparent
         barChart.xAxis.textColor = R.color.dark
+        barChart.axisLeft.textColor = R.color.dark
         barChart.axisLeft.isEnabled = true
         barChart.axisRight.isEnabled = false
+        barChart.axisLeft.axisLineColor = R.color.grayLight
+        barChart.axisLeft.enableGridDashedLine(5f, 5f, 0f)
         barChart.axisLeft.axisMinimum = 0f
 
         barChart.isDoubleTapToZoomEnabled = false

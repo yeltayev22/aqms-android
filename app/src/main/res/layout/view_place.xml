@@ -834,6 +834,7 @@
                                 app:pcv_mode="ring"
                                 app:pcv_orientation="clockwise"
                                 app:pcv_progress="@{vm.tgs2600}"
+                                app:pcv_progressColor="@color/darkBlue"
                                 app:pcv_startAngle="90"
                                 app:pcv_textColor="@color/dark"
                                 app:pcv_textSize="24sp" />
@@ -861,6 +862,7 @@
                                 app:pcv_mode="ring"
                                 app:pcv_orientation="clockwise"
                                 app:pcv_progress="@{vm.tgs2602}"
+                                app:pcv_progressColor="@color/darkBlue"
                                 app:pcv_startAngle="90"
                                 app:pcv_textColor="@color/dark"
                                 app:pcv_textSize="24sp" />
@@ -884,7 +886,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="4dp"
                         android:gravity="center_vertical"
-                        android:src="@drawable/ic_heart_filled"
+                        android:src="@drawable/ic_filter"
                         android:tint="@color/white" />
 
                     <TextView
