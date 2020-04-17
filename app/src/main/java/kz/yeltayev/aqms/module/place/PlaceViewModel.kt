@@ -322,7 +322,7 @@ class PlaceViewModel(
         barDataSet.setDrawValues(false)
         barDataSet.highLightColor = res.getColor(R.color.colorAccent)
         val data = BarData(barDataSet)
-        data.barWidth = 0.19f
+        data.barWidth = 0.5f
 
         if (barEntries.isNotEmpty()) {
             monthBarData.set(data)

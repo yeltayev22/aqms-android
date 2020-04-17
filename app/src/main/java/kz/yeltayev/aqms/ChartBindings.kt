@@ -48,11 +48,13 @@ object ChartBindings {
         barChart.setDrawGridBackground(false)
 
         barChart.data = data
+        barChart.setFitBars(true)
+        barChart.setVisibleXRangeMaximum(30f)
 
         barChart.scrollBarStyle = BarChart.SCROLLBARS_OUTSIDE_OVERLAY
         barChart.scrollBarSize = 2
 
-        barChart.setVisibleXRangeMaximum(7f)
+//        barChart.setVisibleXRangeMaximum(7f)
         barChart.isHorizontalScrollBarEnabled = true
         barChart.scrollBarDefaultDelayBeforeFade = 100000
 
