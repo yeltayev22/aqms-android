@@ -26,6 +26,7 @@ import kz.yeltayev.aqms.utils.round
 import timber.log.Timber
 import java.math.BigDecimal
 import java.text.SimpleDateFormat
+import kotlin.math.min
 import kotlin.random.Random
 
 class PlaceViewModel(
@@ -236,7 +237,7 @@ class PlaceViewModel(
         var index = 0
         val xAxis = mutableListOf<String>()
         val yAxis = mutableListOf<Float>()
-        for (i in 0 until DAYS_IN_WEEK * HOURS_IN_DAY step HOURS_IN_DAY) {
+        for (i in 0 until min(DAYS_IN_WEEK * HOURS_IN_DAY, result.size) step HOURS_IN_DAY) {
 
             val value = result[i].value
             barEntries.add(
@@ -286,7 +287,7 @@ class PlaceViewModel(
         var index = 0
         val xAxis = mutableListOf<String>()
         val yAxis = mutableListOf<Float>()
-        for (i in 0 until DAYS_IN_MONTH * HOURS_IN_DAY step HOURS_IN_DAY) {
+        for (i in 0 until min(DAYS_IN_MONTH * HOURS_IN_DAY, result.size) step HOURS_IN_DAY) {
 
             val value = result[i].value
             barEntries.add(

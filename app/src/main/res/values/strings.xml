@@ -54,12 +54,13 @@
 
     <string name="label_cancel">Cancel</string>
     <string name="label_select_filter">Select filter option</string>
+    <string name="label_find">Find</string>
 
-    <string name="message_select_min">Select minimum</string>
-    <string name="message_select_max">Select maximum</string>
-    <string name="label_options">Options</string>
-    <string name="label_option">Option</string>
     <string name="label_temperature">Temperature</string>
     <string name="label_pressure">Pressure</string>
     <string name="label_humidity">Humidity</string>
+
+    <string name="label_access_code">Access code</string>
+    <string name="message_enter_access_code">If you have access to private place, please enter access code</string>
+    <string name="message_no_place">No place found</string>
 </resources>

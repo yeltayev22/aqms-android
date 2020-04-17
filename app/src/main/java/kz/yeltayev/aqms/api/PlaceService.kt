@@ -18,4 +18,7 @@ interface PlaceService {
 
     @GET("gases/{placeId}")
     fun fetchGasesById(@Path("placeId") placeId: Long): Single<Response<List<Gas>>>
+
+    @GET("places/{accessCode}")
+    fun fetchPlaceByAccessCode(@Path("accessCode") accessCode: String): Single<Response<Place>>
 }

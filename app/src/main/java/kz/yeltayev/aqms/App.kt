@@ -23,7 +23,7 @@ class App : MultiDexApplication() {
         single { MainViewModel(get()) }
 
         single { LiveViewModel(get(), get()) }
-        single { SearchPlacesViewModel() }
+        single { SearchPlacesViewModel(get()) }
         single { PlaceViewModel(get(), get()) }
 
         single { StatisticsViewModel() }

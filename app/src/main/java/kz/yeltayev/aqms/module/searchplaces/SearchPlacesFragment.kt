@@ -32,6 +32,10 @@ class SearchPlacesFragment : Fragment(), SearchView.OnQueryTextListener {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        searchPlacesViewModel.setFragment(this)
+    }
+
     override fun onQueryTextSubmit(query: String): Boolean {
         return false
     }
