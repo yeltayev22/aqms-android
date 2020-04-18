@@ -45,6 +45,16 @@
         <argument
             android:name="placeUiModel"
             app:argType="kz.yeltayev.aqms.module.live.widget.PlaceUiModel" />
+        <action
+            android:id="@+id/action_place_dest_to_aqi_info_dest"
+            app:destination="@id/aqi_info_dest" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/aqi_info_dest"
+        android:name="kz.yeltayev.aqms.module.place.aqiinfo.AqiInfoFragment"
+        android:label="@string/label_aqi_info"
+        tools:layout="@layout/view_aqi_info" />
 
 </navigation>

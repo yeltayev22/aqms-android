@@ -24,7 +24,7 @@ class WeekStatisticsFragment : Fragment() {
             inflater,
             R.layout.view_week_statistics,
             container,
-            true
+            false
         )
 
         binding.vm = placeViewModel

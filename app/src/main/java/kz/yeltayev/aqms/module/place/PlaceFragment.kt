@@ -11,7 +11,6 @@ import kz.yeltayev.aqms.R
 import kz.yeltayev.aqms.databinding.ViewPlaceBinding
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import kz.yeltayev.aqms.module.place.widget.TabFragmentAdapter
-import kz.yeltayev.aqms.module.searchplaces.SearchPlacesFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaceFragment : Fragment() {

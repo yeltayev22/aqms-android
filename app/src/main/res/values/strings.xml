@@ -63,4 +63,9 @@
     <string name="label_access_code">Access code</string>
     <string name="message_enter_access_code">If you have access to private place, please enter access code</string>
     <string name="message_no_place">No place found</string>
+    <string name="label_aqi_info">AQI Guide</string>
+    <string name="text_aqi_info">AQI, or Air Quality Index, is a system for reporting the severity of air quality levels in relatable
+    terms to the public. The index ranges from 0 to 500, where high index values indicate higher levels of air pollution and higher potential for adverse
+    health effects. Any value larger than 300, for example, is considered to be hazardous, while an AQI value of 0-50, on
+    the other hand, represents good air quality.</string>
 </resources>

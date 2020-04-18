@@ -7,6 +7,7 @@ import kz.yeltayev.aqms.module.live.LiveViewModel
 import kz.yeltayev.aqms.module.main.MainViewModel
 import kz.yeltayev.aqms.module.map.MapViewModel
 import kz.yeltayev.aqms.module.place.PlaceViewModel
+import kz.yeltayev.aqms.module.place.aqiinfo.AqiInfoViewModel
 import kz.yeltayev.aqms.module.searchplaces.SearchPlacesViewModel
 import kz.yeltayev.aqms.module.statistics.StatisticsViewModel
 import kz.yeltayev.aqms.utils.GeneralPreferences
@@ -28,6 +29,8 @@ class App : MultiDexApplication() {
 
         single { StatisticsViewModel() }
         single { MapViewModel(get()) }
+
+        single { AqiInfoViewModel() }
     }
 
     private val listOfModules = module {

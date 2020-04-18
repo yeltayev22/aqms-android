@@ -25,7 +25,7 @@ class MonthStatisticsFragment : Fragment() {
             inflater,
             R.layout.view_month_statistics,
             container,
-            true
+            false
         )
 
         binding.vm = placeViewModel
