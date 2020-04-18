@@ -35,6 +35,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         binding.vm = mapViewModel
         mapViewModel.navController = findNavController()
+        mapViewModel.setFragment(this)
 
         mapView = binding.mapView
         mapView?.getMapAsync(this)

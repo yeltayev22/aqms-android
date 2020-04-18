@@ -1,5 +1,9 @@
 package kz.yeltayev.aqms.module.map
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
@@ -7,9 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -19,11 +21,13 @@ import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import kz.yeltayev.aqms.utils.ResourceProvider
 import timber.log.Timber
 
+
 class MapViewModel(
     private val res: ResourceProvider
 ) : ViewModel() {
 
     lateinit var navController: NavController
+    private lateinit var fragment: MapFragment
 
     val isPlaceShown = ObservableBoolean(false)
     var placeUiModel = ObservableField<PlaceUiModel>()
@@ -69,8 +73,50 @@ class MapViewModel(
 
             val markerOptions = MarkerOptions().position(LatLng(lat, lon))
             val marker = googleMap?.addMarker(markerOptions)
+
+            val icon = getIcon(item)
+            marker?.setIcon(icon)
+
             marker?.tag = item
         }
+    }
+
+    private fun getIcon(item: PlaceUiModel): BitmapDescriptor? {
+        val context = this.fragment.context ?: return null
+        when (item.place.aqi) {
+            in 1..50 -> {
+                return bitmapDescriptorFromVector(context, R.drawable.ic_map_marker_good)
+            }
+            in 51..100 -> {
+                return bitmapDescriptorFromVector(context, R.drawable.ic_map_marker_moderate)
+            }
+            in 101..150 -> {
+                return bitmapDescriptorFromVector(context,R.drawable.ic_map_marker_unhealthy_for_sensitive)
+            }
+            in 151..200 -> {
+                return bitmapDescriptorFromVector(context, R.drawable.ic_map_marker_unhealthy)
+            }
+            in 201..300 -> {
+                return bitmapDescriptorFromVector(context, R.drawable.ic_map_marker_very_unhealthy)
+            }
+            else -> {
+                return bitmapDescriptorFromVector(context, R.drawable.ic_map_marker_hazardous)
+            }
+        }
+    }
+
+    private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
+        return ContextCompat.getDrawable(context, vectorResId)?.run {
+            setBounds(0, 0, intrinsicWidth, intrinsicHeight)
+            val bitmap =
+                Bitmap.createBitmap(intrinsicWidth, intrinsicHeight, Bitmap.Config.ARGB_8888)
+            draw(Canvas(bitmap))
+            BitmapDescriptorFactory.fromBitmap(bitmap)
+        }
+    }
+
+    fun setFragment(fragment: MapFragment) {
+        this.fragment = fragment
     }
 
     fun setGoogleMap(googleMap: GoogleMap, lastCameraPosition: CameraPosition?) {
