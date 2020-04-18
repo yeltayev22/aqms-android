@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_place_dest_to_aqi_info_dest"
             app:destination="@id/aqi_info_dest" />
+        <action
+            android:id="@+id/action_place_dest_to_tgs_info_dest"
+            app:destination="@id/tgs_info_dest" />
     </fragment>
 
     <fragment
@@ -37,4 +40,11 @@
         android:name="kz.yeltayev.aqms.module.place.aqiinfo.AqiInfoFragment"
         android:label="@string/label_aqi_info"
         tools:layout="@layout/view_aqi_info" />
+
+    <fragment
+        android:id="@+id/tgs_info_dest"
+        android:name="kz.yeltayev.aqms.module.place.tgsinfo.TgsInfoFragment"
+        android:label="@string/label_tgs_info"
+        tools:layout="@layout/view_tgs_info" />
+
 </navigation>

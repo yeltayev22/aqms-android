@@ -370,6 +370,10 @@ class PlaceViewModel(
     fun onAqiInfoClicked() {
         navController.navigate(R.id.action_place_dest_to_aqi_info_dest)
     }
+
+    fun onTgsInfoClicked() {
+        navController.navigate(R.id.action_place_dest_to_tgs_info_dest)
+    }
 }
 
 private const val WEATHER_BIT_API_KEY = "a3507d96676d41dabde682c792dc489a"

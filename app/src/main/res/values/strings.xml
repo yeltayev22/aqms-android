@@ -68,4 +68,7 @@
     terms to the public. The index ranges from 0 to 500, where high index values indicate higher levels of air pollution and higher potential for adverse
     health effects. Any value larger than 300, for example, is considered to be hazardous, while an AQI value of 0-50, on
     the other hand, represents good air quality.</string>
+    <string name="label_tgs_info">TGS Gas Sensors Guide</string>
+    <string name="info_tgs_2600">"The TGS 2600 has high sensitivity to low concentrations of gaseous air contaminants such as hydrogen and carbon monoxide which exist in cigarette smoke. The sensor can detect hydrogen at a level of several ppm. "</string>
+    <string name="info_tgs_2602">"The TGS 2602 has high sensitivity to low concentrations of odorous gases such as ammonia and H2S generated from waste materials in office and home environments. The sensor also has high sensitivity to low concentrations of VOCs such as toluene emitted from wood finishing and construction products. "</string>
 </resources>
