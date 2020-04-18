@@ -45,7 +45,9 @@ class MapViewModel(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSuccess { response ->
-                    response.body()?.forEach { item ->
+                    response.body()?.filter { place ->
+                        place.accessCode.isEmpty()
+                    }?.forEach { item ->
                         placeUiList.add(PlaceUiModel(item))
                     }
 

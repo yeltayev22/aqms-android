@@ -40,7 +40,9 @@ class StatisticsViewModel : ViewModel() {
                     result?.sortedByDescending { it.aqi }
 
                     var index = 1
-                    result?.forEach { item ->
+                    result?.filter { place ->
+                        place.accessCode.isEmpty()
+                    }?.forEach { item ->
                         placeUiList.add(PlaceUiModel(item, index++))
                     }
 

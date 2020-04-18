@@ -10,5 +10,6 @@ data class Place(
     val country: String,
     val aqi: Int,
     val gas: Gas,
-    val weather: Weather
+    val weather: Weather,
+    val accessCode: String
 )

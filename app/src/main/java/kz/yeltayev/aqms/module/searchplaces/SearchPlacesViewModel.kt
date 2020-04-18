@@ -49,7 +49,9 @@ class SearchPlacesViewModel(
                 .doOnSuccess { response ->
                     val placeUiList = mutableListOf<PlaceUiModel>()
 
-                    response.body()?.forEach { item ->
+                    response.body()?.filter { place ->
+                        place.accessCode.isEmpty()
+                    }?.forEach { item ->
                         placeUiList.add(PlaceUiModel(item))
                     }
 
