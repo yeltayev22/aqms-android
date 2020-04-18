@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/statistics_dest"
         android:name="kz.yeltayev.aqms.module.statistics.StatisticsFragment"
-        android:label="@string/label_statistics"
+        android:label="@string/label_ranking"
         tools:layout="@layout/view_statistics">
 
         <action
