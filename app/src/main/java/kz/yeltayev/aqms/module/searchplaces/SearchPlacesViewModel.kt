@@ -2,7 +2,6 @@ package kz.yeltayev.aqms.module.searchplaces
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.databinding.ObservableBoolean
@@ -18,7 +17,6 @@ import kz.yeltayev.aqms.api.ApiServiceModule
 import kz.yeltayev.aqms.module.live.widget.PlaceUiModel
 import kz.yeltayev.aqms.utils.ResourceProvider
 import timber.log.Timber
-
 
 class SearchPlacesViewModel(
     private val res: ResourceProvider
@@ -119,11 +117,7 @@ class SearchPlacesViewModel(
                     val bundle = bundleOf("placeUiModel" to PlaceUiModel(place))
                     navController.navigate(R.id.action_search_places_dest_to_place_dest, bundle)
                 } else {
-                    Toast.makeText(
-                        fragment.context,
-                        res.getString(R.string.message_no_place),
-                        Toast.LENGTH_SHORT
-                    )
+                    res.showToast(res.getString(R.string.message_no_place))
                 }
             }
             .doOnError { error ->

@@ -13,9 +13,10 @@
         <action
             android:id="@+id/action_map_dest_to_place_dest"
             app:destination="@id/place_dest"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -28,10 +29,18 @@
             app:argType="kz.yeltayev.aqms.module.live.widget.PlaceUiModel" />
         <action
             android:id="@+id/action_place_dest_to_aqi_info_dest"
-            app:destination="@id/aqi_info_dest" />
+            app:destination="@id/aqi_info_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_place_dest_to_tgs_info_dest"
-            app:destination="@id/tgs_info_dest" />
+            app:destination="@id/tgs_info_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment

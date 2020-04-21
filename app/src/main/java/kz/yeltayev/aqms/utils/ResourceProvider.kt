@@ -1,7 +1,9 @@
 package kz.yeltayev.aqms.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import kz.yeltayev.aqms.R
@@ -34,6 +36,15 @@ class ResourceProvider(val context: Context) {
 
     fun getShortMonthName(monthNumber: Int): String {
         return shortDayNames[monthNumber - 1]
+    }
+
+    @SuppressLint("ShowToast")
+    fun showToast(text: String) {
+        Toast.makeText(
+            context,
+            text,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun fillShortDayNames() {
