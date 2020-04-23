@@ -36,11 +36,9 @@ class StatisticsViewModel : ViewModel() {
                 .doOnSuccess { response ->
                     val placeUiList = mutableListOf<PlaceUiModel>()
                     val result = response.body()
-
-                    result?.sortedByDescending { it.aqi }
-
+gs
                     var index = 1
-                    result?.filter { place ->
+                    result?.sortedByDescending { it.aqi }?.filter { place ->
                         place.accessCode.isEmpty()
                     }?.forEach { item ->
                         placeUiList.add(PlaceUiModel(item, index++))
