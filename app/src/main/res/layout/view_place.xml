@@ -298,7 +298,7 @@
                             tools:text="Wednesday" />
 
                         <FrameLayout
-                            android:layout_width="60dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             app:view_backgroundRes="@{vm.dayOne.roundedBackground}">
 
@@ -373,7 +373,7 @@
                             tools:text="Wednesday" />
 
                         <FrameLayout
-                            android:layout_width="60dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             app:view_backgroundRes="@{vm.dayTwo.roundedBackground}">
 
@@ -448,7 +448,7 @@
                             tools:text="Wednesday" />
 
                         <FrameLayout
-                            android:layout_width="60dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             app:view_backgroundRes="@{vm.dayThree.roundedBackground}">
 
@@ -523,7 +523,7 @@
                             tools:text="Wednesday" />
 
                         <FrameLayout
-                            android:layout_width="60dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             app:view_backgroundRes="@{vm.dayFour.roundedBackground}">
 
@@ -598,7 +598,7 @@
                             tools:text="Wednesday" />
 
                         <FrameLayout
-                            android:layout_width="60dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             app:view_backgroundRes="@{vm.dayFive.roundedBackground}">
 
@@ -673,7 +673,7 @@
                             tools:text="Wednesday" />
 
                         <FrameLayout
-                            android:layout_width="60dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             app:view_backgroundRes="@{vm.daySix.roundedBackground}">
 
@@ -748,7 +748,7 @@
                             tools:text="Wednesday" />
 
                         <FrameLayout
-                            android:layout_width="60dp"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
                             app:view_backgroundRes="@{vm.daySeven.roundedBackground}">
 

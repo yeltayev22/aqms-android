@@ -27,6 +27,7 @@ class LiveViewModel(
 
     val isLoading = ObservableBoolean()
     val places = ObservableField<List<PlaceUiModel>>()
+    val noData = ObservableBoolean(false)
 
     init {
         fetchMyPlaces()
@@ -49,11 +50,16 @@ class LiveViewModel(
                         }
                     }
 
+                    if (placeUiList.isNullOrEmpty()) {
+                        noData.set(true)
+                    }
+
                     this.places.set(placeUiList)
 
                     isLoading.set(false)
                 }
                 .doOnError { error ->
+                    noData.set(true)
                     isLoading.set(false)
                     Timber.d("yeltayev22 $error")
                 }

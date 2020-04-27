@@ -70,4 +70,5 @@
     <string name="label_tgs_info">TGS Gas Sensors Guide</string>
     <string name="info_tgs_2600">"The TGS 2600 has high sensitivity to low concentrations of gaseous air contaminants such as hydrogen and carbon monoxide which exist in cigarette smoke. The sensor can detect hydrogen at a level of several ppm. "</string>
     <string name="info_tgs_2602">"The TGS 2602 has high sensitivity to low concentrations of odorous gases such as ammonia and H2S generated from waste materials in office and home environments. The sensor also has high sensitivity to low concentrations of VOCs such as toluene emitted from wood finishing and construction products. "</string>
+    <string name="label_no_places">You have not added your favorite places yet</string>
 </resources>
