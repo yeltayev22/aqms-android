@@ -317,7 +317,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_day" />
 
                         <TextView
@@ -331,7 +331,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_night" />
 
                         <TextView
@@ -343,9 +343,9 @@
                             tools:text="25" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="3dp"
                             android:rotation="@{vm.dayOne.dailyWeatherForecast.windDirection}"
                             android:src="@drawable/ic_back" />
 
@@ -392,7 +392,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_day" />
 
                         <TextView
@@ -406,7 +406,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_night" />
 
                         <TextView
@@ -418,9 +418,9 @@
                             tools:text="25" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="3dp"
                             android:rotation="@{vm.dayTwo.dailyWeatherForecast.windDirection}"
                             android:src="@drawable/ic_back" />
 
@@ -467,7 +467,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_day" />
 
                         <TextView
@@ -481,7 +481,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_night" />
 
                         <TextView
@@ -493,9 +493,9 @@
                             tools:text="25" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="3dp"
                             android:rotation="@{vm.dayThree.dailyWeatherForecast.windDirection}"
                             android:src="@drawable/ic_back" />
 
@@ -542,7 +542,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_day" />
 
                         <TextView
@@ -556,7 +556,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_night" />
 
                         <TextView
@@ -568,9 +568,9 @@
                             tools:text="25" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="3dp"
                             android:rotation="@{vm.dayFour.dailyWeatherForecast.windDirection}"
                             android:src="@drawable/ic_back" />
 
@@ -617,7 +617,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_day" />
 
                         <TextView
@@ -631,7 +631,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_night" />
 
                         <TextView
@@ -643,9 +643,9 @@
                             tools:text="25" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="3dp"
                             android:rotation="@{vm.dayFive.dailyWeatherForecast.windDirection}"
                             android:src="@drawable/ic_back" />
 
@@ -692,7 +692,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_day" />
 
                         <TextView
@@ -706,7 +706,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_night" />
 
                         <TextView
@@ -718,9 +718,9 @@
                             tools:text="25" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="3dp"
                             android:rotation="@{vm.daySix.dailyWeatherForecast.windDirection}"
                             android:src="@drawable/ic_back" />
 
@@ -767,7 +767,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_day" />
 
                         <TextView
@@ -781,7 +781,7 @@
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="25dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="3dp"
                             android:src="@drawable/ic_night" />
 
                         <TextView
@@ -793,9 +793,9 @@
                             tools:text="25" />
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="3dp"
                             android:rotation="@{vm.daySeven.dailyWeatherForecast.windDirection}"
                             android:src="@drawable/ic_back" />
 

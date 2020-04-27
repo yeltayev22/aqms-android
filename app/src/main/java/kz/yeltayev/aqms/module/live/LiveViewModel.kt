@@ -52,6 +52,8 @@ class LiveViewModel(
 
                     if (placeUiList.isNullOrEmpty()) {
                         noData.set(true)
+                    } else {
+                        noData.set(false)
                     }
 
                     this.places.set(placeUiList)

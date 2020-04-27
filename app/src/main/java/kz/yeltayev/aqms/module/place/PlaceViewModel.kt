@@ -115,7 +115,7 @@ class PlaceViewModel(
 
                 val weatherForecastUiList = weatherForecastList?.data?.map { item ->
                     val random = Random.nextInt(-10, 10)
-                    WeatherForecastUiModel(item, place.aqi + random)
+                    WeatherForecastUiModel(item, Math.abs(place.aqi + random))
                 } ?: return@doOnSuccess
 
                 dayOne.set(weatherForecastUiList[0])

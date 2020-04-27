@@ -37,19 +37,19 @@ class PlaceUiModel(
     val aqiImage: Int
         get() {
             when (place.aqi) {
-                in 1..50 -> {
+                in 1..51 -> {
                     return R.drawable.ic_aqi_good
                 }
-                in 51..100 -> {
+                in 51..101 -> {
                     return R.drawable.ic_aqi_moderate
                 }
-                in 101..150 -> {
+                in 101..151 -> {
                     return R.drawable.ic_aqi_unhealthy_for_sensitive
                 }
-                in 151..200 -> {
+                in 151..201 -> {
                     return R.drawable.ic_aqi_unhealthy
                 }
-                in 201..300 -> {
+                in 201..301 -> {
                     return R.drawable.ic_aqi_very_unhealthy
                 }
                 else -> {
@@ -61,19 +61,19 @@ class PlaceUiModel(
     val aqiLabel: Int
         get() {
             when (place.aqi) {
-                in 1..50 -> {
+                in 1..51 -> {
                     return R.string.label_aqi_good
                 }
-                in 51..100 -> {
+                in 51..101 -> {
                     return R.string.label_aqi_moderate
                 }
-                in 101..150 -> {
+                in 101..151 -> {
                     return R.string.label_aqi_unhealthy_for_sensitive
                 }
-                in 151..200 -> {
+                in 151..201 -> {
                     return R.string.label_aqi_unhealthy
                 }
-                in 201..300 -> {
+                in 201..301 -> {
                     return R.string.label_aqi_very_unhealthy
                 }
                 else -> {
@@ -85,19 +85,19 @@ class PlaceUiModel(
     val aqiInfo: Int
         get() {
             when (place.aqi) {
-                in 1..50 -> {
+                in 1..51 -> {
                     return R.string.info_aqi_good
                 }
-                in 51..100 -> {
+                in 51..101 -> {
                     return R.string.info_aqi_moderate
                 }
-                in 101..150 -> {
+                in 101..151 -> {
                     return R.string.info_aqi_unhealthy_for_sensitive
                 }
-                in 151..200 -> {
+                in 151..201 -> {
                     return R.string.info_aqi_unhealthy
                 }
-                in 201..300 -> {
+                in 201..301 -> {
                     return R.string.info_aqi_very_unhealthy
                 }
                 else -> {
@@ -109,19 +109,19 @@ class PlaceUiModel(
     val color: Int
         get() {
             when (place.aqi) {
-                in 1..50 -> {
+                in 1..51 -> {
                     return R.color.aqi_good
                 }
-                in 51..100 -> {
+                in 51..101 -> {
                     return R.color.aqi_moderate
                 }
-                in 101..150 -> {
+                in 101..151 -> {
                     return R.color.aqi_unhealthy_for_sensitive
                 }
-                in 151..200 -> {
+                in 151..201 -> {
                     return R.color.aqi_unhealthy
                 }
-                in 201..300 -> {
+                in 201..301 -> {
                     return R.color.aqi_very_unhealthy
                 }
                 else -> {
@@ -133,19 +133,19 @@ class PlaceUiModel(
     val roundedBackground: Int
         get() {
             when (place.aqi) {
-                in 1..50 -> {
+                in 1..51 -> {
                     return R.drawable.shape_rounded_good
                 }
-                in 51..100 -> {
+                in 51..101 -> {
                     return R.drawable.shape_rounded_moderate
                 }
-                in 101..150 -> {
+                in 101..151 -> {
                     return R.drawable.shape_rounded_unhealthy_for_sensitive
                 }
-                in 151..200 -> {
+                in 151..201 -> {
                     return R.drawable.shape_rounded_unhealthy
                 }
-                in 201..300 -> {
+                in 201..301 -> {
                     return R.drawable.shape_rounded_very_unhealthy
                 }
                 else -> {
@@ -157,19 +157,19 @@ class PlaceUiModel(
     val topRoundedBackground: Int
         get() {
             when (place.aqi) {
-                in 1..50 -> {
+                in 1..51 -> {
                     return R.drawable.shape_top_rounded_good
                 }
-                in 51..100 -> {
+                in 51..101 -> {
                     return R.drawable.shape_top_rounded_moderate
                 }
-                in 101..150 -> {
+                in 101..151 -> {
                     return R.drawable.shape_top_rounded_unhealthy_for_sensitive
                 }
-                in 151..200 -> {
+                in 151..201 -> {
                     return R.drawable.shape_top_rounded_unhealthy
                 }
-                in 201..300 -> {
+                in 201..301 -> {
                     return R.drawable.shape_top_rounded_very_unhealthy
                 }
                 else -> {

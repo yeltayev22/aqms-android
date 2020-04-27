@@ -49,27 +49,6 @@
             </FrameLayout>
         </FrameLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            app:show="@{vm.noData}">
-
-            <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:src="@drawable/ic_no_places" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_no_places"
-                android:textColor="@color/gray" />
-        </LinearLayout>
-
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
@@ -78,15 +57,41 @@
             app:srl_onRefresh="@{vm::fetchMyPlaces}"
             app:viewGroup_animateLayoutChanges="@{150}">
 
-            <kz.yeltayev.aqms.widget.customrecyclerview.CustomRecyclerView
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                app:rv_dividerDrawable="@color/transparent"
-                app:rv_itemLayout="@layout/item_my_place"
-                app:rv_items="@{vm.places}"
-                app:rv_viewModel="@{vm}"
-                app:show="@{!vm.isLoading()}" />
+                android:layout_height="match_parent">
+
+                <kz.yeltayev.aqms.widget.customrecyclerview.CustomRecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    app:rv_dividerDrawable="@color/transparent"
+                    app:rv_itemLayout="@layout/item_my_place"
+                    app:rv_items="@{vm.places}"
+                    app:rv_viewModel="@{vm}"
+                    app:show="@{!vm.isLoading()}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    app:show="@{vm.noData}">
+
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:src="@drawable/ic_no_places" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_no_places"
+                        android:textColor="@color/gray" />
+                </LinearLayout>
+            </FrameLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 </layout>
